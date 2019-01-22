@@ -12,7 +12,6 @@ class Datadog < Formula
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
     ENV.append_path "PATH", "#{Formula['gerbil-scheme'].bin}"
     ENV.append_path "PATH", "/usr/local/opt/gambit-scheme/current/bin"
-    ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
     ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme/libexec"
     system "./build.ss static"
 
