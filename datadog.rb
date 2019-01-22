@@ -3,17 +3,17 @@ class Datadog < Formula
   homepage "https://github.com/ober/datadog"
   url "https://github.com/ober/datadog.git"
   version "master"
-  depends_on "gambit-scheme"
-  depends_on "gerbil-scheme" => "with-yaml"
+
+  depends_on "gerbil-scheme"
 
   def install
     openssl = Formula["openssl"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
-
-    ENV.append_path "PATH", "#{Formula['gambit-scheme'].bin}"
     ENV.append_path "PATH", "#{Formula['gerbil-scheme'].bin}"
-
+    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme/current/bin"
+    ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
+    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme/libexec"
     system "./build.ss static"
 
     bin.install Dir["./datadog"]
