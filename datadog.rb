@@ -15,7 +15,7 @@ class Datadog < Formula
     ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme/libexec"
     system "./build.ss static"
 
-    bin.install Dir["./datadog"]
+    bin.install "datadog"
     bin.install_symlink "datadog" => "dda"
   end
 
@@ -23,6 +23,4 @@ class Datadog < Formula
     output = `#{bin}/datadog`
     assert_equal 0, $CHILD_STATUS.exitstatus
   end
-
-
 end
