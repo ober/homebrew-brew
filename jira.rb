@@ -4,7 +4,7 @@ class Jira < Formula
   url "https://github.com/ober/jira.git"
   version "master"
 
-  depends_on "gerbil-scheme"
+  depends_on "gerbil-scheme-ssl"
 
   def install
 
