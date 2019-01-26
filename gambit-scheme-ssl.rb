@@ -7,6 +7,11 @@ class GambitSchemeSsl < Formula
   depends_on "openssl"
   depends_on "gcc"
 
+  bottle do
+    root_url "https://homebrew.bintray.com/bottles-brew"
+    sha256 "db22d4878840903698ca39d368bcd613f856fa3fc1fbbdc99b7099b03da791a3" => :mojave
+  end
+
   def install
     args = %W[
       --prefix=#{prefix}
