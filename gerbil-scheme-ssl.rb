@@ -5,7 +5,7 @@ class GerbilSchemeSsl < Formula
   sha256 "8525877960ba7a6122d6dfd2bae34ed1437d5231f9e31de97bbe6106c4dfa03a"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-brew"
+    root_url "https://github.com/ober/homebrew-brew/raw/master"
     sha256 "6419fc1167a08561fba02e13f0b09ef4cd6851688f2e1c2de447ece543429247" => :mojave
   end
 
