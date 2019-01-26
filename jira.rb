@@ -7,8 +7,8 @@ class Jira < Formula
   depends_on "gerbil-scheme-ssl"
 
   bottle do
-    root_url "https://github.com/ober/homebrew-brew/blob/master/"
-    sha256 "6904a2c9055d27871232bde77e7a1ed8d544627bb38282cf2ed7da14fc79570e" => :mojave
+    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    sha256 "6904a2c9055d27871232bde77e7a1ed8d544627bb38282cf2ed7da14fc79570eo" => :mojave
   end
 
   def install
