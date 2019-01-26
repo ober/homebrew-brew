@@ -7,7 +7,7 @@ class Datadog < Formula
   depends_on "gerbil-scheme-ssl"
 
   bottle do
-    root_url "https://homebrew.bintray.com/bottles-brew"
+    root_url "https://github.com/ober/homebrew-brew/blob/master/"
     cellar :any
     sha256 "cebe7fa83bf424c1201d6c395c9a8d59d34ddebb1f43f942f1b09c859fab72f1" => :mojave
   end

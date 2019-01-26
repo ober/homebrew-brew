@@ -6,6 +6,11 @@ class Jira < Formula
 
   depends_on "gerbil-scheme-ssl"
 
+  bottle do
+    root_url "https://github.com/ober/homebrew-brew/blob/master/"
+    sha256 "2fffb00f2490846557f44181542be3891d411b66000201ea823ec8ddf13e4a59" => :mojave
+  end
+
   def install
 
     openssl = Formula["openssl"]
@@ -14,7 +19,7 @@ class Jira < Formula
 
     gambit = Formula["gambit-scheme-ssl"]
     ENV.append_path "PATH", gambit.opt_bin
-    ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}/current/libexec"
+    ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}"
     ENV.append_path "PATH", "#{Formula['gerbil-scheme-ssl'].bin}"
     ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ssl/current/bin"
     ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ssl/libexec"
