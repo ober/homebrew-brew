@@ -12,13 +12,11 @@ class Jira < Formula
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
 
-    gambit = Formula["gambit-scheme"]
+    gambit = Formula["gambit-scheme-ssl"]
     ENV.append_path "PATH", gambit.opt_bin
-    puts "XXX: #{Formula['gambit-scheme'].bin}"
-    puts "XXX: #{Formula['gambit-scheme'].opt_bin}"
-    ENV.append_path "PATH", "#{Formula['gambit-scheme'].bin}"
-    ENV.append_path "PATH", "#{Formula['gerbil-scheme'].bin}"
-
+    ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}"
+    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ssl'].bin}"
+    ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     system "./build.ss static"
 
     bin.install Dir["./jira"]
