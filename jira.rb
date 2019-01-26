@@ -14,9 +14,12 @@ class Jira < Formula
 
     gambit = Formula["gambit-scheme-ssl"]
     ENV.append_path "PATH", gambit.opt_bin
-    ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}"
+    ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}/current/libexec"
     ENV.append_path "PATH", "#{Formula['gerbil-scheme-ssl'].bin}"
+    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ssl/current/bin"
+    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ssl/libexec"
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+    puts ENV['PATH']
     system "./build.ss static"
 
     bin.install Dir["./jira"]
