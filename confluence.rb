@@ -23,6 +23,4 @@ class Confluence < Formula
     output = `#{bin}/confluence`
     assert_equal 0, $CHILD_STATUS.exitstatus
   end
-
-
 end
