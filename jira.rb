@@ -8,7 +8,7 @@ class Jira < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "2fffb00f2490846557f44181542be3891d411b66000201ea823ec8ddf13e4a59" => :mojave
+    sha256 "4d17984cc682ae7b8579df9fef7c956e935e783ca7f46456f54ce82425c1414e" => :mojave
   end
 
   def install
