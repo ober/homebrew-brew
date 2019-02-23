@@ -6,6 +6,11 @@ class Confluence < Formula
 
   depends_on "gerbil-scheme-ssl"
 
+  bottle do
+    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    sha256 "ea8bd1cc1a3449501829ac4edd17f8d780cbe72aed529fc93d973976bb72a4f1" => :mojave
+  end
+
   def install
     openssl = Formula["openssl"]
     ENV.prepend "CPPFLAGS", "-I#{Formula['openssl'].opt_include}"
