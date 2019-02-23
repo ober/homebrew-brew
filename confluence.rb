@@ -13,7 +13,7 @@ class Confluence < Formula
 
     ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}"
     ENV.append_path "PATH", "#{Formula['gerbil-scheme-ssl'].bin}"
-
+    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ssl/libexec"
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     system "./build.ss static"
     bin.install Dir["./confluence"]
