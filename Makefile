@@ -15,3 +15,6 @@ remove-all:
 
 install-all:
 	@brew install slack jira confluence datadog
+
+cycle: remove-all install-all
+	@echo "All done!"
