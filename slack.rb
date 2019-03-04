@@ -4,7 +4,7 @@ class Slack < Formula
   url "https://github.com/ober/slack.git"
   version "master"
 
-  depends_on "gerbil-scheme-ssl"
+  depends_on "gerbil-scheme-ssl" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
@@ -34,6 +34,4 @@ class Slack < Formula
     output = `#{bin}/slack`
     assert_equal 0, $CHILD_STATUS.exitstatus
   end
-
-
 end

@@ -4,7 +4,7 @@ class Jira < Formula
   url "https://github.com/ober/jira.git"
   version "master"
 
-  depends_on "gerbil-scheme-ssl"
+  depends_on "gerbil-scheme-ssl" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
