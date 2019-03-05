@@ -8,7 +8,7 @@ class Slack < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "1aceb2dfbc893ea58c574601fc23f2ac997dae8ae9ae43eea876d0ca44252d6a" => :mojave
+    sha256 "7d7f697cf116b18bcda4230891250654e4f3b4cdf4264ff8dc16f1a67eab3691  slack-master.mojave.bottle.tar.gz" => :mojave
   end
 
   def install
