@@ -35,11 +35,11 @@ sha:
 gerbil:
 	@brew remove -f --ignore-dependencies gerbil-scheme-ssl
 	@brew install --build-bottle ./gerbil-scheme-ssl.rb --verbose
-	@brew bottle ./gerbil-scheme-ssl.rb --verbose
+	@brew bottle gerbil-scheme-ssl --verbose
 
 gambit:
 	@brew remove -f --ignore-dependencies gambit-scheme-ssl
 	@brew install --build-bottle ./gambit-scheme-ssl.rb --verbose
-	@brew bottle ./gambit-scheme-ssl.rb --verbose
+	@brew bottle gambit-scheme-ssl --verbose
 
 system: gambit gerbil
