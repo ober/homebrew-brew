@@ -21,8 +21,7 @@ class Datadog < Formula
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     system "./build-bin.ss static"
 
-    bin.install "datadog"
-    bin.install_symlink "datadog" => "dda"
+    bin.install "dda"
   end
 
   test do
