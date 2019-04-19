@@ -19,9 +19,10 @@ class Datadog < Formula
     ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ssl/current/bin"
     ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ssl/libexec"
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-    system "./build-bin.ss static"
+    system "./build.ss static"
 
-    bin.install "dda"
+    bin.install "datadog"
+    bin.install_symlink "datadog" => "dda"
   end
 
   test do
