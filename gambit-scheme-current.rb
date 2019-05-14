@@ -13,7 +13,6 @@ class GambitSchemeCurrent < Formula
 
   def install
     args = %W[
-      CC="#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")} -D___USE_C_RTS_CHAR_OPERATIONS"
       --prefix=#{prefix}
       --enable-single-host
       --enable-multiple-versions
@@ -25,7 +24,7 @@ class GambitSchemeCurrent < Formula
       s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     end
 
-    ENV['CC'] =  "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")} -D___USE_C_RTS_CHAR_OPERATIONS"
+    ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")} -D___USE_C_RTS_CHAR_OPERATIONS"
     system "./configure", *args
     system "make"
     ENV.deparallelize

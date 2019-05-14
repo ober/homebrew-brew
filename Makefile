@@ -9,6 +9,12 @@ build:
 	    brew bottle $$pkg; \
 	done
 
+build-head:
+	brew install --build-bottle gambit-scheme-current --verbose
+	brew bottle gambit-scheme-current
+	brew install --build-bottle gerbil-scheme-current --verbose
+	brew bottle gerbil-scheme-current
+
 remove-all:
 	@brew remove -f --ignore-dependencies jira datadog confluence slack gerbil-scheme-ssl gambit-scheme-ssl
 
