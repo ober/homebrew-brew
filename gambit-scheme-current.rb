@@ -4,7 +4,7 @@ class GambitSchemeCurrent < Formula
   head "https://github.com/gambit/gambit.git"
 
   depends_on "openssl"
-  depends_on "gcc"
+  depends_on "gcc@8"
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
