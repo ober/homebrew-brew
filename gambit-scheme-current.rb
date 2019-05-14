@@ -4,7 +4,7 @@ class GambitSchemeCurrent < Formula
   head "https://github.com/gambit/gambit.git"
 
   depends_on "openssl"
-  depends_on "gcc@8"
+  depends_on "gcc"
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
@@ -13,6 +13,7 @@ class GambitSchemeCurrent < Formula
 
   def install
     args = %W[
+      CC="#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")} -D___USE_C_RTS_CHAR_OPERATIONS"
       --prefix=#{prefix}
       --enable-single-host
       --enable-multiple-versions
