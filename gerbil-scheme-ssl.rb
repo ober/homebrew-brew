@@ -38,6 +38,10 @@ class GerbilSchemeSsl < Formula
         s.gsub! "(enable lmdb #f)", "(enable lmdb #t)"
       end
 
+      inreplace "std/net/request.ss" do |s|
+        s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)"
+      end
+
       ENV.prepend "CPPFLAGS", "-I#{Formula["libyaml"].opt_include}"
       ENV.prepend "CPPFLAGS", "-I#{Formula["leveldb"].opt_include}"
       ENV.prepend "CPPFLAGS", "-I#{Formula["lmdb"].opt_include}"
