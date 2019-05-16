@@ -9,6 +9,11 @@ build:
 	    brew bottle $$pkg; \
 	done
 
+datadog:
+	@brew remove -f --ignore-dependencies datadog
+	brew install --build-bottle datadog --verbose
+	brew bottle datadog
+
 build-head:
 	brew install --build-bottle gambit-scheme-current --verbose
 	brew bottle gambit-scheme-current
