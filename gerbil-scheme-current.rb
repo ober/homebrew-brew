@@ -1,7 +1,7 @@
 class GerbilSchemeCurrent < Formula
   desc "Opinionated dialect of Scheme designed for Systems Programming"
   homepage "https://cons.io"
-  head "https://github.com/vyzo/gerbil"
+  head "https://github.com/vyzo/gerbil.git"
 
   depends_on "gambit-scheme-current"
   depends_on "leveldb"
@@ -22,6 +22,8 @@ class GerbilSchemeCurrent < Formula
 
     cd "src" do
       ENV.append_path "PATH", "#{Formula["gambit-scheme-current"].opt_prefix}/current/bin"
+      system "git fetch --tags --force --always"
+      puts "PATH is #{ENV['PATH']}"
       ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
 
       inreplace "std/build-features.ss" do |s|

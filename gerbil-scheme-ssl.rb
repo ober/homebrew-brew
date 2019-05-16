@@ -39,7 +39,7 @@ class GerbilSchemeSsl < Formula
       end
 
       inreplace "std/net/request.ss" do |s|
-        s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)"
+        s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)))"
       end
 
       ENV.prepend "CPPFLAGS", "-I#{Formula["libyaml"].opt_include}"
