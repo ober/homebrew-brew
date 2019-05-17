@@ -29,19 +29,8 @@ install-all:
 cycle: remove-all install-all
 	@echo "All done!"
 
-sha: $(eval confluence_sha := `shasum -a 256 $(firstword $(wildcard confluence*mojave*gz))`)
-sha: $(eval datadog_sha := `shasum -a 256 $(firstword $(wildcard datadog*mojave*gz))`)
-sha: $(eval gambit_sha := `shasum -a 256 $(firstword $(wildcard gambit*mojave*gz))`)
-sha: $(eval gerbil_sha := `shasum -a 256 $(firstword $(wildcard gerbil*mojave*gz))`)
-sha: $(eval jira_sha := `shasum -a 256 $(firstword $(wildcard jira*mojave*gz))`)
-sha: $(eval slack_sha := `shasum -a 256 $(firstword $(wildcard slack*mojave*gz))`)
 sha:
-	@gsed -i -e "s#sha256 \"[0-9][a-f].*\"*:mojave#sha256 \"$(confluence_sha)\" => :mojave#g" confluence.rb
-	@gsed -i -e "s#sha256 \"[0-9][a-f].*\"*:mojave#sha256 \"$(datadog_sha)\" => :mojave#g" datadog.rb
-	@gsed -i -e "s#sha256 \"[0-9][a-f].*\"*:mojave#sha256 \"$(gambit_sha)\" => :mojave#g" gambit-scheme-ssl.rb
-	@gsed -i -e "s#sha256 \"[0-9][a-f].*\"*:mojave#sha256 \"$(gerbil_sha)\" => :mojave#g" gerbil-scheme-ssl.rb
-	@gsed -i -e "s#sha256 \"[0-9][a-f].*\"*:mojave#sha256 \"$(jira_sha)\" => :mojave#g" jira.rb
-	@gsed -i -e "s#sha256 \"[0-9][a-f].*\"*:mojave#sha256 \"$(slack_sha)\" => :mojave#g" slack.rb
+	gsed -i -e "s#sha256 \"[0-9][a-f].*\" => :mojave#sha256 \"`shasum -a 256 $(firstword $(wildcard datadog*mojave*gz))`\" => :mojave#g" datadog.rb
 
 gerbil:
 	@brew remove -f --ignore-dependencies gerbil-scheme-ssl
