@@ -7,7 +7,7 @@ class GerbilSchemeSsl < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "deb8e2d98c764c83c629a69e8b4c3d843f20f4f18eaa086ec09854fca8d66a3b" => :mojave
+    sha256 "97e715fb272ae3ba151608c65dd38509e0336db9011a2cd707c0f50e8ccf415d" => :mojave
   end
 
   depends_on "gambit-scheme-ssl"
