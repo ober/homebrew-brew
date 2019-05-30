@@ -8,8 +8,9 @@ class Datadog < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master/"
-    sha256 "fb4c1ebedfeff04e2b8368aa01fc9d95bd73f6a8716989351e479ced5586349f" => :mojave
+    sha256 "23392043cb785e9690eca2e8b7488b1f9b522123b9a5d93c94781891cc76c898xb" => :mojave
   end
+
 
   def install
     openssl = Formula["openssl"]
