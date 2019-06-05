@@ -8,7 +8,7 @@ class Datadog < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master/"
-    sha256 "23392043cb785e9690eca2e8b7488b1f9b522123b9a5d93c94781891cc76c898xb" => :mojave
+    sha256 "4bd704d97640b7ea8532c387cb3315897c66ed3ed2059ecbb85495fd3b94dfc9" => :mojave
   end
 
 
