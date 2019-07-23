@@ -2,15 +2,14 @@ class Datadog < Formula
   desc "Datadog command line helper"
   homepage "https://github.com/ober/datadog"
   url "https://github.com/ober/datadog.git"
-  version "master"
+  version "0.0.1"
 
   depends_on "gerbil-scheme-ssl" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master/"
-    sha256 "4bd704d97640b7ea8532c387cb3315897c66ed3ed2059ecbb85495fd3b94dfc9" => :mojave
+    sha256 "d50bdf47f82696dc3fe846a3d201faa040904b06e786cc89a137b4f5a4ffaa67" => :mojave
   end
-
 
   def install
     openssl = Formula["openssl"]
