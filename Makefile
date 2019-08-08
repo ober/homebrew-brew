@@ -55,6 +55,11 @@ gerbil:
 	@brew install --build-bottle ./gerbil-scheme-ssl.rb --verbose
 	@brew bottle gerbil-scheme-ssl --verbose
 
+gerbil-current:
+	@brew remove -f --ignore-dependencies gerbil-scheme-current
+	@brew install --HEAD --build-bottle ./gerbil-scheme-current.rb --verbose
+	@brew bottle gerbil-scheme-current --verbose
+
 gambit:
 	@brew remove -f --ignore-dependencies gambit-scheme-ssl
 	@brew install --build-bottle ./gambit-scheme-ssl.rb --verbose

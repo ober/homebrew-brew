@@ -22,7 +22,7 @@ class GerbilSchemeCurrent < Formula
 
     cd "src" do
       ENV.append_path "PATH", "#{Formula["gambit-scheme-current"].opt_prefix}/current/bin"
-      system "git fetch --tags --force --always"
+      system "git fetch --tags --force"
       puts "PATH is #{ENV['PATH']}"
       ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
 
@@ -42,7 +42,7 @@ class GerbilSchemeCurrent < Formula
       ENV.prepend "LDFLAGS", "-L#{Formula["leveldb"].opt_lib}"
       ENV.prepend "LDFLAGS", "-L#{Formula["openssl"].opt_lib}"
 
-      ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+      ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
       ENV.append_path "PATH", "#{Formula["gambit-scheme-current"].opt_prefix}/current/bin"
 
       system "./build.sh"
