@@ -23,7 +23,7 @@ slack: old := $(shell grep sha256 slack.rb|awk '{ print $$2}')
 slack: new := $(shell shasum -a 256 $(firstword $(wildcard slack*gz)) |awk '{ print $$1}')
 slack:
 	@brew remove -f --ignore-dependencies slack || true
-	brew install --build-bottle slack --verbose
+	brew install --build-bottle ./slack.rb --verbose
 	brew bottle slack
 	@sed -i -e "s#$(old)#$(new)#g" slack.rb
 
