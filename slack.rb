@@ -2,7 +2,7 @@ class Slack < Formula
   desc "Slack command line helper"
   homepage "https://github.com/ober/slack"
   url "https://github.com/ober/slack.git"
-  version "0.01"
+  version "0.02"
 
   depends_on "gerbil-scheme-ssl" => :build
 
