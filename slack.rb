@@ -8,14 +8,14 @@ class Slack < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "0723c8d1727f81318eda7a986f7ecf8905521e1a4fadd84dc3fbf41b1d09930e" => :mojave
+    sha256 "16f6bec602ea633140398ba8e5b4ca3adbaa9b89ec6e15c12df1b7f29fac1b85" => :mojave
   end
 
   def install
     openssl = Formula["openssl"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
-
+    puts "here #{openssl.opt_include}"
     leveldb = Formula["leveldb"]
     ENV.prepend "LDFLAGS", "-L#{leveldb.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{leveldb.opt_include}"
