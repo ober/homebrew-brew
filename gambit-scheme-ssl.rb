@@ -21,10 +21,6 @@ class GambitSchemeSsl < Formula
       --enable-openssl
     ]
 
-#    inreplace "lib/os_io.c" do |s|
-#      s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
-#    end
-
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     system "./configure", *args
     system "make"
