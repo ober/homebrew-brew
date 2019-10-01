@@ -15,7 +15,6 @@ class Confluence < Formula
     openssl = Formula["openssl"]
     ENV.prepend "CPPFLAGS", "-I#{Formula['openssl'].opt_include}"
     ENV.prepend "LDFLAGS", "-L#{Formula['openssl'].opt_lib}"
-
     ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}"
     ENV.append_path "PATH", "#{Formula['gerbil-scheme-ssl'].bin}"
     ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ssl/libexec"

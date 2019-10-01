@@ -2,7 +2,7 @@ class Datadog < Formula
   desc "Datadog command line helper"
   homepage "https://github.com/ober/datadog"
   url "https://github.com/ober/datadog.git"
-  version "0.01"
+  version "0.02"
 
   depends_on "gerbil-scheme-ssl" => :build
 
