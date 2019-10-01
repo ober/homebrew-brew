@@ -21,9 +21,9 @@ class GambitSchemeSsl < Formula
       --enable-openssl
     ]
 
-    inreplace "lib/os_io.c" do |s|
-      s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
-    end
+#    inreplace "lib/os_io.c" do |s|
+#      s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
+#    end
 
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     system "./configure", *args
@@ -33,6 +33,6 @@ class GambitSchemeSsl < Formula
   end
 
   test do
-    assert_equal "0123456789", shell_output("#{prefix}/v4.9.1/bin/gsi -e \"(for-each write '(0 1 2 3 4 5 6 7 8 9))\"")
+    assert_equal "0123456789", shell_output("#{prefix}/current/bin/gsi -e \"(for-each write '(0 1 2 3 4 5 6 7 8 9))\"")
   end
 end
