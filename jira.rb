@@ -30,10 +30,9 @@ class Jira < Formula
   end
 
   plist_options :manual => "docs go here or something"
+
   test do
     output = `#{bin}/jira`
     assert_equal 0, $CHILD_STATUS.exitstatus
   end
-
-
 end
