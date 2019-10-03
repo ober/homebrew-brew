@@ -11,8 +11,8 @@ datadog:
 	brew bottle datadog
 	@sed -i "s#$(old)#$(new)#g" datadog.rb
 
-jira: old := $(shell grep sha256 jira.rb|awk '{ print $$2}')
-jira: new := $(shell shasum -a 256 $(firstword $(wildcard jira*gz)) |awk '{ print $$1}')
+jira: old := $(shell grep sha256 jira.rb|awk '{ print $$2}'|tr -d '"')
+jira: new := $(shell shasum -a 256 $(firstword $(wildcard jira*gz)) |awk '{ print $$1}'|tr -d '"')
 jira:
 	@brew remove -f --ignore-dependencies jira || true
 	brew install --build-bottle jira --verbose
