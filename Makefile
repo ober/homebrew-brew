@@ -17,7 +17,7 @@ jira:
 	@brew remove -f --ignore-dependencies jira || true
 	brew install --build-bottle jira --verbose
 	brew bottle jira
-	@sed -i "s#$(old)#$(new)#g" jira.rb
+	sed -i "s#$(old)#$(new)#g" jira.rb
 
 slack: old := $(shell grep sha256 slack.rb|awk '{ print $$2}')
 slack: new := $(shell shasum -a 256 $(firstword $(wildcard slack*gz)) |awk '{ print $$1}')
