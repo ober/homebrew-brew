@@ -42,7 +42,7 @@ class GerbilSchemeSsl < Formula
         s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)))"
       end
 
-      inreplace "lib/gerbil/gambit/os.ssi" do |s|
+      inreplace "../bootstrap/gerbil/gambit/os.ssi" do |s|
         s.gsub! "(tty-mode-set! tty-mode-set!)","(tty-mode-reset tty-mode-reset)(tty-mode-set! tty-mode-set!)"
       end
 
