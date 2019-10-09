@@ -1,0 +1,67 @@
+diff --git a/doc/reference/core-prelude.md b/doc/reference/core-prelude.md
+index c68df56b..2b28a28d 100644
+--- a/doc/reference/core-prelude.md
++++ b/doc/reference/core-prelude.md
+@@ -1766,7 +1766,9 @@ OS-related symbols, including time.
+
+   tty?
+   tty-history tty-history-set! tty-history-max-length-set!
+-  tty-text-attributes-set! tty-mode-set! tty-type-set!
++  tty-text-attributes-set! tty-mode-reset tty-mode-set!
++  tty-type-set!
++
+
+ ```
+ #### :gerbil/gambit/ports
+diff --git a/src/bootstrap/gerbil/core.ssxi.ss b/src/bootstrap/gerbil/core.ssxi.ss
+index 423809ab..76bd7534 100644
+--- a/src/bootstrap/gerbil/core.ssxi.ss
++++ b/src/bootstrap/gerbil/core.ssxi.ss
+@@ -773,7 +773,8 @@ package: gerbil
+  create-symbolic-link
+
+  tty-history-set! tty-history-max-length-set!
+- tty-text-attributes-set! tty-mode-set! tty-type-set!
++ tty-text-attributes-set! tty-mode-reset tty-mode-set!
++ tty-type-set!
+
+  input-port-timeout-set!
+  output-port-timeout-set!
+diff --git a/src/bootstrap/gerbil/gambit/os.ssi b/src/bootstrap/gerbil/gambit/os.ssi
+index 711a56fe..2203b792 100644
+--- a/src/bootstrap/gerbil/gambit/os.ssi
++++ b/src/bootstrap/gerbil/gambit/os.ssi
+@@ -98,5 +98,6 @@ namespace: gerbil/gambit/os
+           (tty-history-set! tty-history-set!)
+           (tty-history-max-length-set! tty-history-max-length-set!)
+           (tty-text-attributes-set! tty-text-attributes-set!)
++          (tty-mode-reset tty-mode-reset)
+           (tty-mode-set! tty-mode-set!)
+           (tty-type-set! tty-type-set!)))
+diff --git a/src/gerbil/prelude/core.ssxi.ss b/src/gerbil/prelude/core.ssxi.ss
+index 423809ab..769f1d96 100644
+--- a/src/gerbil/prelude/core.ssxi.ss
++++ b/src/gerbil/prelude/core.ssxi.ss
+@@ -773,7 +773,9 @@ package: gerbil
+  create-symbolic-link
+
+  tty-history-set! tty-history-max-length-set!
+- tty-text-attributes-set! tty-mode-set! tty-type-set!
++ tty-text-attributes-set! tty-mode-reset tty-mode-set!
++ tty-type-set!
++
+
+  input-port-timeout-set!
+  output-port-timeout-set!
+diff --git a/src/gerbil/prelude/gambit/os.ss b/src/gerbil/prelude/gambit/os.ss
+index d55512a5..d645d04d 100644
+--- a/src/gerbil/prelude/gambit/os.ss
++++ b/src/gerbil/prelude/gambit/os.ss
+@@ -97,5 +97,6 @@ package: gerbil/gambit
+   ;; tty stuff
+   tty?
+   tty-history tty-history-set! tty-history-max-length-set!
+-  tty-text-attributes-set! tty-mode-set! tty-type-set!
++  tty-text-attributes-set! tty-mode-reset tty-mode-set!
++  tty-type-set!
+   )
