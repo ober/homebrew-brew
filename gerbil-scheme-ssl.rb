@@ -27,6 +27,11 @@ class GerbilSchemeSsl < Formula
       gxtags
     ]
 
+    patch do
+      url "https://raw.githubusercontent.com/ober/homebrew-brew/master/tty-reset.patch"
+      sha256 "195d07e19eeed95dc20aa73a1e897f3c282ef57809e3d4845f6fbbfd562ad408"
+    end
+
     cd "src" do
       ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
       ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
@@ -36,11 +41,6 @@ class GerbilSchemeSsl < Formula
         s.gsub! "(enable libxml #f)", "(enable libxml #t)"
         s.gsub! "(enable libyaml #f)", "(enable libyaml #t)"
         s.gsub! "(enable lmdb #f)", "(enable lmdb #t)"
-      end
-
-      patch do
-        url "https://github.com/ober/homebrew-brew/raw/master/tty-reset.patch"
-        sha256 "195d07e19eeed95dc20aa73a1e897f3c282ef57809e3d4845f6fbbfd562ad408"
       end
 
       inreplace "std/net/request.ss" do |s|
