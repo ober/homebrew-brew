@@ -5,7 +5,7 @@ class GerbilSchemeSsl < Formula
   sha256 "3d29eecdaa845b073bf8413cd54e420b3f48c79c25e43fab5a379dde029d0cde"
 
   bottle do
-    rebuild 2
+    rebuild 1
     sha256 "5b9c4898dbb05e08c62571e0dcf0f3aad893e7c15ee6330fd188a66472b1098f" => :mojave
   end
 
@@ -30,7 +30,6 @@ class GerbilSchemeSsl < Formula
       gxprof
       gxtags
     ]
-
 
     cd "src" do
       ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
