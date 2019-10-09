@@ -43,10 +43,6 @@ class GerbilSchemeSsl < Formula
         sha256 "195d07e19eeed95dc20aa73a1e897f3c282ef57809e3d4845f6fbbfd562ad408"
       end
 
-      inreplace "bootstrap/gerbil/gambit/os.ssi" do |s|
-        s.gsub! "(tty-mode-set! tty-mode-set!)","(tty-mode-reset tty-mode-reset)(tty-mode-set! tty-mode-set!)"
-      end
-
       inreplace "std/net/request.ss" do |s|
         s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)))"
       end
