@@ -2,12 +2,11 @@ class GerbilSchemeSsl < Formula
   desc "Opinionated dialect of Scheme designed for Systems Programming"
   homepage "https://cons.io"
   url "https://github.com/vyzo/gerbil/archive/v0.15.1.tar.gz"
-
   sha256 "3d29eecdaa845b073bf8413cd54e420b3f48c79c25e43fab5a379dde029d0cde"
 
   bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "97e715fb272ae3ba151608c65dd38509e0336db9011a2cd707c0f50e8ccf415d" => :mojave
+    rebuild 2
+    sha256 "5b9c4898dbb05e08c62571e0dcf0f3aad893e7c15ee6330fd188a66472b1098f" => :mojave
   end
 
   depends_on "gambit-scheme-ssl"
