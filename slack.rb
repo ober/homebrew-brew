@@ -5,6 +5,8 @@ class Slack < Formula
   version "0.02"
 
   depends_on "gerbil-scheme-ssl" => :build
+#XXX needed for openssl to be found: ln -s /usr/local/opt/openssl@1.1/include/openssl /usr/local/include
+
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
