@@ -27,7 +27,7 @@ class GerbilSchemeSsl < Formula
       gxtags
     ]
 
-    patch do
+    patch :p1 do
       url "https://raw.githubusercontent.com/ober/homebrew-brew/master/tty-reset.patch"
       sha256 "195d07e19eeed95dc20aa73a1e897f3c282ef57809e3d4845f6fbbfd562ad408"
     end
