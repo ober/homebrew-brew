@@ -12,7 +12,7 @@ class Slack < Formula
   end
 
   def install
-    openssl = Formula["openssl"]
+    openssl = Formula["openssl@1.1"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
     puts "here #{openssl.opt_include}"
