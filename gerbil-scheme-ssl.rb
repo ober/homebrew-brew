@@ -17,6 +17,11 @@ class GerbilSchemeSsl < Formula
   depends_on "lmdb"
   depends_on "openssl@1.1"
 
+  patch :p1 do
+    url "https://raw.githubusercontent.com/ober/homebrew-brew/master/tty-reset.patch"
+    sha256 "195d07e19eeed95dc20aa73a1e897f3c282ef57809e3d4845f6fbbfd562ad408"
+  end
+
   def install
     bins = %w[
       gxi
@@ -27,10 +32,6 @@ class GerbilSchemeSsl < Formula
       gxtags
     ]
 
-    patch :p1 do
-      url "https://raw.githubusercontent.com/ober/homebrew-brew/master/tty-reset.patch"
-      sha256 "195d07e19eeed95dc20aa73a1e897f3c282ef57809e3d4845f6fbbfd562ad408"
-    end
 
     cd "src" do
       ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
