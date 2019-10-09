@@ -2,7 +2,7 @@ class Jira < Formula
   desc "jira command line helper"
   homepage "https://github.com/ober/jira"
   url "https://github.com/ober/jira.git"
-  version "0.04"
+  version "0.05"
 
   depends_on "gerbil-scheme-ssl" => :build
 
