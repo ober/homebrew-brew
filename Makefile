@@ -1,7 +1,7 @@
 .PHONY: slack confluence datadog jira sha
 default: build
 
-build: slack jira confluence slack datadog
+build: jira confluence slack datadog
 
 datadog: old := $(shell grep sha256 datadog.rb|awk '{ print $$2}')
 datadog: new := $(shell shasum -a 256 $(firstword $(wildcard datadog*gz)) |awk '{ print $$1}')
