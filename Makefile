@@ -63,6 +63,6 @@ gerbil-current:
 gambit:
 	@brew remove -f --ignore-dependencies gambit-scheme-ober
 	@brew install --build-bottle ./gambit-scheme-ober.rb --verbose
-	@brew bottle gambit-scheme-ober --verbose
+	@brew bottle gambit-scheme-ober--verbose
 
 system: gambit gerbil
