@@ -1,4 +1,4 @@
-class GerbilSchemeSsl < Formula
+class GerbilSchemeOber < Formula
   desc "Opinionated dialect of Scheme designed for Systems Programming"
   homepage "https://cons.io"
   url "https://github.com/vyzo/gerbil/archive/v0.15.1.tar.gz"
@@ -10,7 +10,7 @@ class GerbilSchemeSsl < Formula
     sha256 "5b9c4898dbb05e08c62571e0dcf0f3aad893e7c15ee6330fd188a66472b1098f" => :mojave
   end
 
-  depends_on "gambit-scheme-ssl"
+  depends_on "gambit-scheme-ober"
   depends_on "leveldb"
   depends_on "gcc"
   depends_on "libyaml"
@@ -57,7 +57,7 @@ class GerbilSchemeSsl < Formula
       ENV.prepend "LDFLAGS", "-L#{Formula["openssl"].opt_lib}"
 
       ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-      ENV.append_path "PATH", "#{Formula["gambit-scheme-ssl"].opt_prefix}/current/bin"
+      ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
 
       system "./build.sh"
     end
