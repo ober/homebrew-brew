@@ -4,7 +4,7 @@ class Jira < Formula
   url "https://github.com/ober/jira.git"
   version "0.05"
 
-  depends_on "gerbil-scheme-ssl" => :build
+  depends_on "gerbil-scheme-ober" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
@@ -16,12 +16,12 @@ class Jira < Formula
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
 
-    gambit = Formula["gambit-scheme-ssl"]
+    gambit = Formula["gambit-scheme-ober"]
     ENV.append_path "PATH", gambit.opt_bin
-    ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}"
-    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ssl'].bin}"
-    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ssl/current/bin"
-    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ssl/libexec"
+    ENV.append_path "PATH", "#{Formula['gambit-scheme-ober'].bin}"
+    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ober'].bin}"
+    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ober/current/bin"
+    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     puts ENV['PATH']
     system "./build.ss static"

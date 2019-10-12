@@ -4,7 +4,7 @@ class Slack < Formula
   url "https://github.com/ober/slack.git"
   version "0.02"
 
-  depends_on "gerbil-scheme-ssl" => :build
+  depends_on "gerbil-scheme-ober" => :build
   depends_on "gnu-sed" => :build
 #XXX needed for openssl to be found: ln -s /usr/local/opt/openssl@1.1/include/openssl /usr/local/include
 
@@ -23,10 +23,10 @@ class Slack < Formula
     ENV.prepend "LDFLAGS", "-L#{leveldb.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{leveldb.opt_include}"
 
-    ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}"
-    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ssl'].bin}"
-    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ssl/current/bin"
-    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ssl/libexec"
+    ENV.append_path "PATH", "#{Formula['gambit-scheme-ober'].bin}"
+    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ober'].bin}"
+    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ober/current/bin"
+    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     system "./build.ss static"
 

@@ -4,7 +4,7 @@ class Confluence < Formula
   url "https://github.com/ober/confluence.git"
   version "master"
 
-  depends_on "gerbil-scheme-ssl" => :build
+  depends_on "gerbil-scheme-ober" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
@@ -15,10 +15,10 @@ class Confluence < Formula
     openssl = Formula["openssl"]
     ENV.prepend "CPPFLAGS", "-I#{Formula['openssl'].opt_include}"
     ENV.prepend "LDFLAGS", "-L#{Formula['openssl'].opt_lib}"
-    ENV.append_path "PATH", "#{Formula['gambit-scheme-ssl'].bin}"
-    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ssl'].bin}"
-    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ssl/libexec"
-    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ssl/current/bin"
+    ENV.append_path "PATH", "#{Formula['gambit-scheme-ober'].bin}"
+    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ober'].bin}"
+    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
+    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ober/current/bin"
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     system "./build.ss static"
     bin.install Dir["./confluence"]
