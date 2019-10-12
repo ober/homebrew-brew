@@ -53,16 +53,16 @@ cycle: remove-all install-all
 gerbil:
 	@brew remove -f --ignore-dependencies gerbil-scheme-ober
 	@brew install --verbose --build-bottle ./gerbil-scheme-ober.rb
-	@brew bottle gerbil-scheme-ober --verbose
+	@brew bottle --verbose gerbil-scheme-ober
 
 gerbil-current:
 	@brew remove -f --ignore-dependencies gerbil-scheme-current
 	@brew install --verbose --HEAD --build-bottle ./gerbil-scheme-current.rb
-	@brew bottle gerbil-scheme-current --verbose
+	@brew bottle --verbose gerbil-scheme-current
 
 gambit:
 	@brew remove -f --ignore-dependencies gambit-scheme-ober
 	@brew install --verbose --build-bottle ./gambit-scheme-ober.rb
-	@brew bottle gambit-scheme-ober--verbose
+	@brew bottle --verbose gambit-scheme-ober
 
 system: gambit gerbil
