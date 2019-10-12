@@ -1,4 +1,4 @@
-class GambitSchemeSsl < Formula
+class GambitSchemeOber < Formula
   desc "Gambit Scheme is an implementation of the Scheme Language"
   homepage "http://gambitscheme.org"
   url "https://github.com/gambit/gambit/archive/v4.9.3.tar.gz"
