@@ -5,6 +5,7 @@ class Jira < Formula
   version "0.05"
 
   depends_on "gerbil-scheme-ober" => :build
+  depends_on "openssl@1.1" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
@@ -12,7 +13,7 @@ class Jira < Formula
   end
 
   def install
-    openssl = Formula["openssl"]
+    openssl = Formula["openssl@1.1"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
 
