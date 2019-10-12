@@ -50,8 +50,8 @@ install-all:
 cycle: remove-all install-all
 	@echo "All done!"
 
-gerbil: old := $(shell grep sha256 gerbil.rb|awk '{ print $$2}'|tr -d '"')
-gerbil: new := $(shell shasum -a 256 $(firstword $(wildcard gerbil*gz)) |awk '{ print $$1}')
+gerbil: old := $(shell grep sha256 gerbil-scheme-ober.rb|awk '{ print $$2}'|tr -d '"')
+gerbil: new := $(shell shasum -a 256 $(firstword $(wildcard gerbil-scheme-ober*gz)) |awk '{ print $$1}')
 gerbil:
 	@brew remove -f --ignore-dependencies gerbil-scheme-ober
 	@brew install --verbose --build-bottle ./gerbil-scheme-ober.rb
@@ -62,7 +62,7 @@ gerbil-current:
 	@brew install --verbose --HEAD --build-bottle ./gerbil-scheme-current.rb
 	@brew bottle --verbose gerbil-scheme-current
 
-gambit: old := $(shell grep sha256 gambit.rb|awk '{ print $$2}'|tr -d '"')
+gambit: old := $(shell grep sha256 gambit-scheme-ober.rb|awk '{ print $$2}'|tr -d '"')
 gambit: new := $(shell shasum -a 256 $(firstword $(wildcard gambit*gz)) |awk '{ print $$1}')
 gambit:
 	@brew remove -f --ignore-dependencies gambit-scheme-ober
