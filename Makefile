@@ -42,7 +42,7 @@ build-head:
 	brew bottle gerbil-scheme-current
 
 remove-all:
-	@brew remove -f --ignore-dependencies jira datadog confluence slack gerbil-scheme-ssl gambit-scheme-ssl
+	@brew remove -f --ignore-dependencies jira datadog confluence slack gerbil-scheme-ober gambit-scheme-ober
 
 install-all:
 	@brew install slack jira confluence datadog
@@ -51,9 +51,9 @@ cycle: remove-all install-all
 	@echo "All done!"
 
 gerbil:
-	@brew remove -f --ignore-dependencies gerbil-scheme-ssl
-	@brew install --build-bottle ./gerbil-scheme-ssl.rb --verbose
-	@brew bottle gerbil-scheme-ssl --verbose
+	@brew remove -f --ignore-dependencies gerbil-scheme-ober
+	@brew install --build-bottle ./gerbil-scheme-ober.rb --verbose
+	@brew bottle gerbil-scheme-ober --verbose
 
 gerbil-current:
 	@brew remove -f --ignore-dependencies gerbil-scheme-current
@@ -61,8 +61,8 @@ gerbil-current:
 	@brew bottle gerbil-scheme-current --verbose
 
 gambit:
-	@brew remove -f --ignore-dependencies gambit-scheme-ssl
-	@brew install --build-bottle ./gambit-scheme-ssl.rb --verbose
-	@brew bottle gambit-scheme-ssl --verbose
+	@brew remove -f --ignore-dependencies gambit-scheme-ober
+	@brew install --build-bottle ./gambit-scheme-ober.rb --verbose
+	@brew bottle gambit-scheme-ober --verbose
 
 system: gambit gerbil
