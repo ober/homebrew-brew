@@ -3,36 +3,36 @@ default: build
 
 build: jira confluence slack datadog
 
-datadog: old := $(shell grep sha256 datadog.rb|awk '{ print $$2}'|tr -d '"')
-datadog: new := $(shell shasum -a 256 $(firstword $(wildcard datadog*gz)) |awk '{ print $$1}')
 datadog:
 	@brew remove -f --ignore-dependencies datadog || true
 	brew install  --verbose --build-bottle datadog
 	brew bottle datadog
+	$(eval old := $(shell grep sha256 datadog.rb|tail -n 1|awk '{ print $$2}'|tr -d '"'))
+	$(eval new := $(shell shasum -a 256 $(firstword $(wildcard datadog*gz,/dev/null)) |awk '{ print $$1}'))
 	gsed -i "s#$(old)#$(new)#g" datadog.rb
 
-jira: old := $(shell grep sha256 jira.rb|awk '{ print $$2}'|tr -d '"')
-jira: new := $(shell shasum -a 256 $(firstword $(wildcard jira*gz)) |awk '{ print $$1}'|tr -d '"')
 jira:
 	@brew remove -f --ignore-dependencies jira || true
 	brew install --verbose --build-bottle jira
 	brew bottle jira
+	$(eval old := $(shell grep sha256 jira.rb|tail -n 1|awk '{ print $$2}'|tr -d '"'))
+	$(eval new := $(shell shasum -a 256 $(firstword $(wildcard jira*gz, /dev/null)) |awk '{ print $$1}'))
 	gsed -i "s#$(old)#$(new)#g" jira.rb
 
-slack: old := $(shell grep sha256 slack.rb|awk '{ print $$2}'|tr -d '"')
-slack: new := $(shell shasum -a 256 $(firstword $(wildcard slack*gz)) |awk '{ print $$1}')
 slack:
 	@brew remove -f --ignore-dependencies slack || true
 	brew install --verbose --build-bottle ./slack.rb
 	brew bottle slack
+	$(eval old := $(shell grep sha256 slack.rb|tail -n 1|awk '{ print $$2}'|tr -d '"'))
+	$(eval new := $(shell shasum -a 256 $(firstword $(wildcard slack*gz, /dev/null)) |awk '{ print $$1}'))
 	gsed -i "s#$(old)#$(new)#g" slack.rb
 
-confluence: old := $(shell grep sha256 confluence.rb|awk '{ print $$2}'|tr -d '"')
-confluence: new := $(shell shasum -a 256 $(firstword $(wildcard confluence*gz)) |awk '{ print $$1}')
 confluence:
 	@brew remove -f --ignore-dependencies confluence || true
 	brew install --verbose --build-bottle confluence
 	brew bottle confluence
+	$(eval old := $(shell grep sha256 confluence.rb|tail -n 1|awk '{ print $$2}'|tr -d '"'))
+	$(eval new := $(shell shasum -a 256 $(firstword $(wildcard confluence*gz, /dev/null)) |awk '{ print $$1}'))
 	gsed -i "s#$(old)#$(new)#g" confluence.rb
 
 build-head:
@@ -50,23 +50,25 @@ install-all:
 cycle: remove-all install-all
 	@echo "All done!"
 
-gerbil: old := $(shell grep sha256 gerbil-scheme-ober.rb|awk '{ print $$2}'|tr -d '"')
-gerbil: new := $(shell shasum -a 256 $(firstword $(wildcard gerbil-scheme-ober*gz)) |awk '{ print $$1}')
 gerbil:
-	@brew remove -f --ignore-dependencies gerbil-scheme-ober
-	@brew install --verbose --build-bottle ./gerbil-scheme-ober.rb
-	@brew bottle --verbose gerbil-scheme-ober
+	brew remove -f --ignore-dependencies gerbil-scheme-ober
+	brew install --verbose --build-bottle ./gerbil-scheme-ober.rb
+	brew bottle --verbose gerbil-scheme-ober
+	$(eval old := $(shell grep sha256 gerbil-scheme-ober.rb|tail -n 1|awk '{ print $$2}'|tr -d '"'))
+	$(eval new := $(shell shasum -a 256 $(firstword $(wildcard gerbil-scheme-ober*gz, /dev/null)) |awk '{ print $$1}'))
+	gsed -i "s#$(old)#$(new)#g" gerbil-scheme-ober.rb
 
 gerbil-current:
 	@brew remove -f --ignore-dependencies gerbil-scheme-current
 	@brew install --verbose --HEAD --build-bottle ./gerbil-scheme-current.rb
 	@brew bottle --verbose gerbil-scheme-current
 
-gambit: old := $(shell grep sha256 gambit-scheme-ober.rb|awk '{ print $$2}'|tr -d '"')
-gambit: new := $(shell shasum -a 256 $(firstword $(wildcard gambit*gz)) |awk '{ print $$1}')
 gambit:
-	@brew remove -f --ignore-dependencies gambit-scheme-ober
-	@brew install --verbose --build-bottle ./gambit-scheme-ober.rb
-	@brew bottle --verbose gambit-scheme-ober
+	brew remove -f --ignore-dependencies gambit-scheme-ober
+	brew install --verbose --build-bottle ./gambit-scheme-ober.rb
+	brew bottle --verbose gambit-scheme-ober
+	$(eval old := $(shell grep sha256 gambit-scheme-ober.rb|tail -n 1|awk '{ print $$2}'|tr -d '"'))
+	$(eval new := $(shell shasum -a 256 $(firstword $(wildcard gambit-scheme-ober*gz, /dev/null)) |awk '{ print $$1}'))
+	gsed -i "s#$(old)#$(new)#g" gambit-scheme-ober.rb
 
 system: gambit gerbil
