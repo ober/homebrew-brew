@@ -5,7 +5,7 @@ class GambitSchemeOber < Formula
   sha256 "a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
 
   depends_on "openssl@1.1"
-  depends_on "gcc@9"
+  depends_on "gcc"
 
   bottle do
     rebuild 1
@@ -26,6 +26,9 @@ class GambitSchemeOber < Formula
     system "./configure", *args
     system "make"
     ENV.deparallelize
+    ENV.prepend "LDFLAGS", "-L#{Formula["openssl@1.1"].opt_lib}"
+    ENV.prepend "CPPFLAGS", "-I#{Formula["openssl@1.1"].opt_include}"
+
     system "make", "install"
   end
 
