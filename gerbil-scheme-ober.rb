@@ -47,14 +47,15 @@ class GerbilSchemeOber < Formula
         s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)))"
       end
 
+      openssl = Formula["openssl@1.1"]
+      ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
+      ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
       ENV.prepend "CPPFLAGS", "-I#{Formula["libyaml"].opt_include}"
       ENV.prepend "CPPFLAGS", "-I#{Formula["leveldb"].opt_include}"
       ENV.prepend "CPPFLAGS", "-I#{Formula["lmdb"].opt_include}"
-      ENV.prepend "CPPFLAGS", "-I#{Formula["openssl"].opt_include}"
       ENV.prepend "LDFLAGS", "-L#{Formula["libyaml"].opt_lib}"
       ENV.prepend "LDFLAGS", "-L#{Formula["lmdb"].opt_lib}"
       ENV.prepend "LDFLAGS", "-L#{Formula["leveldb"].opt_lib}"
-      ENV.prepend "LDFLAGS", "-L#{Formula["openssl"].opt_lib}"
 
       ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
       ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
