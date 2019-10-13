@@ -3,8 +3,8 @@ class GambitSchemeCurrent < Formula
   homepage "http://gambitscheme.org"
   head "https://github.com/gambit/gambit.git"
 
-  depends_on "openssl"
-  depends_on "gcc"
+  depends_on "openssl@1.1" => :build
+  depends_on "gcc" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
@@ -25,6 +25,9 @@ class GambitSchemeCurrent < Formula
     end
 
     ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")} -D___USE_C_RTS_CHAR_OPERATIONS"
+    openssl = Formula["openssl@1.1"]
+    ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
+    ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
     system "./configure", *args
     system "make"
     ENV.deparallelize
