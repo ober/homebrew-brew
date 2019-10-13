@@ -1,22 +1,24 @@
-.PHONY: slack confluence datadog jira sha
+.PHONY: slack confluence datadog jira sha lala
 default: build
 
 build: jira confluence slack datadog
+SED=gsed
+
 
 define replace-sha
 $(eval bottle := $(firstword $(wildcard $(2))))
 $(info $(1) is formula wildcard is $(2) bottle is $(bottle))
-$(if $(strip $(bottle))
-	$(info no gerbil bottles found!),
-	$(replace-sha-full $(1) $(strip $(bottle))))
+$(if "$(strip $(bottle))"
+	$$(info no $(bottle) bottles found!),
+	$(call replace-sha-full,$(1),$(strip $(bottle)))))
 endef
 
 define replace-sha-full
-	$(eval old := $(subst ",, $(word 2,$(shell grep sha256 $(1)))))
-	$(eval new := $(word 1,$(shell shasum -a 256 $(2))))
-	$(info old is $(old) new is $(new))
-	cat $(1)|sed -e "s#$(old)#$(new)#g" > /tmp/$(1).back
-	mv /tmp/$(1).back $(1)))
+$(eval old := $(subst ",, $(word 4, $(shell grep sha256 $(1)))))
+$(eval new := $(word 1, $(shell shasum -a 256 $(2))))
+$(info old is $(old) new is $(new))
+	$(SED) -i "s#$(old)#$(new)#g" $(1)
+
 endef
 
 datadog:
@@ -70,7 +72,7 @@ install-all:
 cycle: remove-all install-all
 	@echo "All done!"
 
-gerbil: space = gambit-scheme-ober
+gerbil: space = gerbil-scheme-ober
 gerbil:
 	@#brew remove -f --ignore-dependencies $(space)
 	@#brew install --verbose --build-bottle ./$(space).rb
@@ -82,17 +84,13 @@ gerbil-current:
 	@brew remove -f --ignore-dependencies $(space)
 	@brew install --verbose --HEAD --build-bottle $(space)
 	@brew bottle --verbose $(space)
-	old = $(shell grep sha256 $(space).rb|tail -n 1|gawk '{ print $$2}'|tr -d '"')
-	new = $(shell shasum -a 256 $(firstword $(wildcard gerbil-scheme-ober*gz)) |gawk '{ print $$1}')
-	$(call replace-sha,$(space).rb,$(old),$(new))
+	$(call replace-sha,$(space).rb,$(space)*gz)
 
+gambit: space = gambit-scheme-ober
 gambit:
-	$(eval space := "gambit-scheme-ober")
-	brew remove -f --ignore-dependencies gambit-scheme-ober
-	brew install --verbose --build-bottle ./gambit-scheme-ober.rb
-	brew bottle --verbose gambit-scheme-ober
-#	old := $(shell grep sha256 $(space).rb|tail -n 1|gawk '{ print $$2}'|tr -d '"')
-#	new := $(shell shasum -a 256 $(firstword $(wildcard gambit-scheme-ober*gz)) |gawk '{ print $$1 a}')
-	$(call replace-sha,$(space).rb,$(old),$(new))
+#	brew remove -f --ignore-dependencies gambit-scheme-ober
+#	brew install --verbose --build-bottle ./gambit-scheme-ober.rb
+#	brew bottle --verbose gambit-scheme-ober
+	$(call replace-sha,$(space).rb,$(space)*gz)
 
 system: gambit gerbil
