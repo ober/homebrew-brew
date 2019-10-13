@@ -17,8 +17,7 @@ define replace-sha-full
 $(eval old := $(subst ",, $(word 4, $(shell grep sha256 $(1)))))
 $(eval new := $(word 1, $(shell shasum -a 256 $(2))))
 $(info old is $(old) new is $(new))
-	$(SED) -i "s#$(old)#$(new)#g" $(1)
-
+$(call $(SHELL $(SED) -i "s#$(old)#$(new)#g" $(1)))
 endef
 
 datadog:
