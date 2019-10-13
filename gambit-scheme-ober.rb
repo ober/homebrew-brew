@@ -6,6 +6,7 @@ class GambitSchemeOber < Formula
 
   depends_on "gcc" => :build
   depends_on "openssl" => :build
+  depends_on "texinfo" => :build
 
   bottle do
     rebuild 1
