@@ -8,14 +8,13 @@ class Slack < Formula
   depends_on "gnu-sed" => :build
 #XXX needed for openssl to be found: ln -s /usr/local/opt/openssl@1.1/include/openssl /usr/local/include
 
-
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
     sha256 "b4e664e4b02fc5d5ed55fd2f263ca1a95d31b70b16c8ff0a604e3e3a91ed4582" => :mojave
   end
 
   def install
-    openssl = Formula["openssl@1.1"]
+    openssl = Formula["openssl"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
     puts "here #{openssl.opt_include}"
