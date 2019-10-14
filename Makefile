@@ -1,32 +1,32 @@
-.PHONY: slack confluence datadog jira sha lala
+.PHONY: slack confluence datadog jira sha lala replace-sha replace-sha-full
 default: build
 
 build: jira confluence slack datadog
 SED=gsed
 
 
-define replace-sha
-$(eval bottle := $(firstword $(wildcard $(2))))
-$(info $(1) is formula wildcard is $(2) bottle is $(bottle))
-$(if "$(strip $(bottle))"
-	$$(info no $(bottle) bottles found!),
-	$(call replace-sha-full,$(1),$(strip $(bottle)))))
-endef
+replace-sha-full:
+	$(eval old := $(subst ",, $(word 4, $(shell grep sha256 $(form)))))
+	$(eval new := $(word 1, $(shell shasum -a 256 $(bottle))))
+	$(info old is $(old) new is $(new))
+	$(SED) -i "s#$(old)#$(new)#g" $(form)
 
-define replace-sha-full
-$(eval old := $(subst ",, $(word 4, $(shell grep sha256 $(1)))))
-$(eval new := $(word 1, $(shell shasum -a 256 $(2))))
-$(info old is $(old) new is $(new))
-$(call $(SHELL $(SED) -i "s#$(old)#$(new)#g" $(1)))
-endef
+replace-sha:
+	$(eval bottle := $(firstword $(wildcard $(bot))))
+	$(info $(form) is formula wildcard is $(bot) bottle is $(bottle))
+ifneq ($(strip $(bottle)),)
+	$(info no $(bottle) bottles found!)
+else
+	$(MAKE) replace-sha-full form=$(form) bottle=$(strip $(bottle))
+endif
 
 datadog:
 	space = "datadog"
 	@brew remove -f --ignore-dependencies datadog || true
 	brew install  --verbose --build-bottle datadog
 	brew bottle datadog
-	old = $(shell grep sha256 $(space).rb|tail -n 1|gawk '{ print $$2}'|tr -d '"')
-	new = $(shell shasum -a 256 $(firstword $(wildcard datadog*gz)) |gawk '{ print $$1}')
+	old = $(shell grep sha256 $(space).rb|tail -n 1|awk '{ print $$2}'|tr -d '"')
+	new = $(shell shasum -a 256 $(firstword $(wildcard datadog*gz)) |awk '{ print $$1}')
 	$(call replace-sha,$(space).rb,$(old),$(new))
 
 jira:
@@ -34,7 +34,7 @@ jira:
 	@brew remove -f --ignore-dependencies jira || true
 	brew install --verbose --build-bottle jira
 	brew bottle jira
-	old = $(shell grep sha256 $(space).rb|tail -n 1|gawk '{ print $$2}'|tr -d '"')
+	old = $(shell grep sha256 $(space).rb|tail -n 1|awk '{ print $$2}'|tr -d '"')
 	new = $(shell shasum -a 256 $(firstword $(wildcard jira*gz)) |gawk '{ print $$1}')
 	$(call replace-sha,$(space).rb,$(old),$(new))
 
@@ -50,11 +50,11 @@ slack:
 confluence:
 	$(eval space := "confluence")
 	@brew remove -f --ignore-dependencies $(space) || true
-	brew install --verbose --build-bottle $(space)
-	brew bottle $(space)
-	old = $(shell grep sha256 $(space).rb|tail -n 1|gawk '{ print $$2}'|tr -d '"')
-	new = $(shell shasum -a 256 $(firstword $(wildcard confluence*gz)) |gawk '{ print $$1}')
-	$(call replace-sha,$(space).rb,$(old),$(new))
+	brew install --verbose --build-bocccttle $(space)
+	brew bottle $(space)ccchd
+	old = $(shell grep sha256hevug $(space).rb|tail -n 1|gawk '{ print $$2}'|tr -d '"')
+	new = $(shell shasum -a 256 $(chejlkfirstword $(wildcard confluence*gz)) |gawk '{ print $$1}')
+	$(call replace-sha,$(space).rb,$(oldbvrve),$(new))
 
 build-head:
 	brew install --verbose --build-bottle gambit-scheme-current
@@ -90,6 +90,6 @@ gambit:
 #	brew remove -f --ignore-dependencies gambit-scheme-ober
 #	brew install --verbose --build-bottle ./gambit-scheme-ober.rb
 #	brew bottle --verbose gambit-scheme-ober
-	$(call replace-sha,$(space).rb,$(space)*gz)
+	$(MAKE)	replace-sha form=$(space).rb bot=$(space)*gz
 
 system: gambit gerbil
