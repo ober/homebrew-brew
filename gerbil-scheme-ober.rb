@@ -15,7 +15,7 @@ class GerbilSchemeOber < Formula
   depends_on "gcc"
   depends_on "libyaml"
   depends_on "lmdb"
-  depends_on "openssl@1.1"
+  depends_on "openssl"
 
   patch :p1 do
     url "https://raw.githubusercontent.com/ober/homebrew-brew/master/tty-reset.patch"
@@ -47,7 +47,7 @@ class GerbilSchemeOber < Formula
         s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)))"
       end
 
-      openssl = Formula["openssl@1.1"]
+      openssl = Formula["openssl"]
       ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
       ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
       ENV.prepend "CPPFLAGS", "-I#{Formula["libyaml"].opt_include}"
