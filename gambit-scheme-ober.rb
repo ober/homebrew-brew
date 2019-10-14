@@ -9,8 +9,9 @@ class GambitSchemeOber < Formula
   depends_on "texinfo" => :build
 
   bottle do
+    rebuild 3
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "728f77b55e631dc2adeea215f90ab31bc0ed821f279a69651f5220681a19d55e" => :mojave
+    sha256 "569ebedc4fb561d3de0add14817c40478ec58854bdf1d5133cff415fd11c33bd" => :mojave
   end
 
   def install
