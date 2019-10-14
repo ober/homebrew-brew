@@ -7,7 +7,7 @@ class GerbilSchemeOber < Formula
   bottle do
     rebuild 1
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "5b9c4898dbb05e08c62571e0dcf0f3aad893e7c15ee6330fd188a66472b1098f" => :mojave
+    sha256 "040b00968a3c094fa5826e7bec0efd5ff4a5394cb6e4f96174bbc9b7195c80ac" => :mojave
   end
 
   depends_on "gambit-scheme-ober"
