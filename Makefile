@@ -40,6 +40,12 @@ confluence:
 gerbil:
 	$(MAKE) app space=gerbil-scheme-ober
 
+gambit-head:
+	@brew remove -f --ignore-dependencies gambit-scheme-current || true
+	brew install --verbose --build-bottle gambit-scheme-current
+	brew bottle gambit-scheme-current
+	$(MAKE) replace-sha gambit-scheme-current.rb gambit-scheme-current*gz
+
 gambit:
 	$(MAKE) app space=gambit-scheme-ober
 
