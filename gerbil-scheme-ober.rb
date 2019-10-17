@@ -5,7 +5,6 @@ class GerbilSchemeOber < Formula
   sha256 "3d29eecdaa845b073bf8413cd54e420b3f48c79c25e43fab5a379dde029d0cde"
 
   bottle do
-    rebuild 3
     root_url "https://github.com/ober/homebrew-brew/raw/master"
     sha256 "f6549ed55207cbd7cce6cfee3d1a18113de57b6bdc1aab0ddd93db3ae65c5295" => :mojave
   end
