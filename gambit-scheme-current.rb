@@ -19,7 +19,7 @@ class GambitSchemeCurrent < Formula
     openssl = Formula["openssl"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
-    system "./configure", *args
+    system "./configure"
     ENV.deparallelize
     system "make"
     system "make", "install"
