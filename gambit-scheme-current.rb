@@ -6,31 +6,26 @@ class GambitSchemeCurrent < Formula
   depends_on "openssl" => :build
   depends_on "gcc" => :build
 
-  bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "d38ad8ed242a6a2bf7ada2bbac050326c1eacd6615650ddcd7eaa27ad3fc20d7" => :mojave
-  end
-
   def install
     args = %W[
       --prefix=#{prefix}
-      --enable-single-host
-      --enable-multiple-versions
-      --enable-default-runtime-options=f8,-8,t8
-      --enable-openssl
+      # --enable-single-host
+      # --enable-multiple-versions
+      # --enable-default-runtime-options=f8,-8,t8
+      # --enable-openssl
     ]
 
-    inreplace "lib/os_io.c" do |s|
-      s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
-    end
+    # inreplace "lib/os_io.c" do |s|
+    #   s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
+    # end
 
     ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}" # -D___USE_C_RTS_CHAR_OPERATIONS"
     openssl = Formula["openssl"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
     system "./configure", *args
-    system "make"
     ENV.deparallelize
+    system "make"
     system "make", "install"
   end
 
