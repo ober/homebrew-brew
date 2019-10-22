@@ -6,22 +6,21 @@ class Jira < Formula
 
   depends_on "gerbil-scheme-ober"
 
-  bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "3c076001864161a1a12055c8bd4416fff75dbe58862732aa246164d7b1498ff6" => :mojave
-  end
-
   def install
-    gambit = Formula["gambit-scheme-ober"]
-    ENV.append_path "PATH", gambit.opt_bin
-    ENV.append_path "PATH", "#{Formula['gambit-scheme-ober'].bin}"
-    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ober'].bin}"
-    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ober/current/bin"
+    # openssl = Formula["openssl"]
+    # ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl"
+    # ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
+
     ENV['GERBIL_HOME'] = "#{Formula['gerbil-scheme-ober'].libexec}"
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     puts ENV['PATH'], ENV['GERBIL_HOME']
     system "gxpkg install github.com/ober/jira"
     #bin.install Dir["./jira"]
+    ENV['GERBIL_PATH'] = "."
+    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
+    ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+    system "gxpkg install github.com/ober/jira"
+    bin.install Dir["bin/jira"]
   end
 
   plist_options :manual => "docs go here or something"
