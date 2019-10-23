@@ -3,7 +3,7 @@ class GerbilSchemeCurrent < Formula
   homepage "https://cons.io"
   head "https://github.com/vyzo/gerbil.git"
 
-  depends_on "gambit-scheme-current"
+  depends_on "gambit-scheme"
   depends_on "leveldb"
   depends_on "gcc"
   depends_on "libyaml"
@@ -21,7 +21,7 @@ class GerbilSchemeCurrent < Formula
     ]
 
     cd "src" do
-      ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
+      ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
       system "git fetch --tags --force"
       puts "PATH is #{ENV['PATH']}"
       ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
@@ -43,7 +43,7 @@ class GerbilSchemeCurrent < Formula
       ENV.prepend "LDFLAGS", "-L#{Formula["openssl"].opt_lib}"
 
       ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-      ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
+      ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
 
       system "./build.sh"
     end
@@ -56,7 +56,7 @@ class GerbilSchemeCurrent < Formula
   end
 
   test do
-    ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
+    ENV.append_path "PATH", "#{Formula["gerbil-scheme-current"].opt_prefix}/current/bin"
     assert_equal "0123456789", shell_output("#{libexec}/bin/gxi -e \"(for-each write '(0 1 2 3 4 5 6 7 8 9))\"")
   end
 end
