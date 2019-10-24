@@ -5,7 +5,6 @@ class GerbilSchemeCurrent < Formula
 
   depends_on "gambit-scheme"
   depends_on "leveldb"
-  depends_on "gcc"
   depends_on "libyaml"
   depends_on "lmdb"
   depends_on "openssl@1.1"
@@ -23,7 +22,6 @@ class GerbilSchemeCurrent < Formula
     cd "src" do
       ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
       system "git fetch --tags --force"
-      puts "PATH is #{ENV['PATH']}"
       ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
 
       inreplace "std/build-features.ss" do |s|
@@ -33,16 +31,22 @@ class GerbilSchemeCurrent < Formula
         s.gsub! "(enable lmdb #f)", "(enable lmdb #t)"
       end
 
-      ENV.prepend "CPPFLAGS", "-I#{Formula["libyaml"].opt_include}"
-      ENV.prepend "CPPFLAGS", "-I#{Formula["leveldb"].opt_include}"
-      ENV.prepend "CPPFLAGS", "-I#{Formula["lmdb"].opt_include}"
-      ENV.prepend "CPPFLAGS", "-I#{Formula["openssl"].opt_include}"
-      ENV.prepend "LDFLAGS", "-L#{Formula["libyaml"].opt_lib}"
-      ENV.prepend "LDFLAGS", "-L#{Formula["lmdb"].opt_lib}"
-      ENV.prepend "LDFLAGS", "-L#{Formula["leveldb"].opt_lib}"
-      ENV.prepend "LDFLAGS", "-L#{Formula["openssl"].opt_lib}"
+      openssl = Formula["openssl@1.1"]
+      ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
+      ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
 
-      ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+      yaml = Formula["libyaml"]
+      ENV.prepend "LDFLAGS", "-L#{yaml.opt_lib}"
+      ENV.prepend "CPPFLAGS", "-I#{yaml.opt_include}"
+
+      leveldb = Formula["leveldb"]
+      ENV.prepend "LDFLAGS", "-L#{leveldb.opt_lib}"
+      ENV.prepend "CPPFLAGS", "-I#{leveldb.opt_include}"
+
+      lmdb = Formula["lmdb"]
+      ENV.prepend "LDFLAGS", "-L#{lmdb.opt_lib}"
+      ENV.prepend "CPPFLAGS", "-I#{lmdb.opt_include}"
+
       ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
 
       system "./build.sh"
