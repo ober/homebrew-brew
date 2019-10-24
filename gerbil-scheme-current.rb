@@ -8,7 +8,7 @@ class GerbilSchemeCurrent < Formula
   depends_on "gcc"
   depends_on "libyaml"
   depends_on "lmdb"
-  depends_on "openssl"
+  depends_on "openssl@1.1"
 
   def install
     bins = %w[
