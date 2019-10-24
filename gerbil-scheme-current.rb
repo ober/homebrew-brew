@@ -7,7 +7,7 @@ class GerbilSchemeCurrent < Formula
   depends_on "leveldb"
   depends_on "libyaml"
   depends_on "lmdb"
-  depends_on "openssl@1.1"
+  depends_on "openssl"
 
   def install
     bins = %w[
@@ -31,7 +31,7 @@ class GerbilSchemeCurrent < Formula
         s.gsub! "(enable lmdb #f)", "(enable lmdb #t)"
       end
 
-      openssl = Formula["openssl@1.1"]
+      openssl = Formula["openssl"]
       ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl"
       ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
 
