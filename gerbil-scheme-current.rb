@@ -50,7 +50,7 @@ class GerbilSchemeCurrent < Formula
       ENV.prepend "LDFLAGS", "-L#{lmdb.opt_lib}"
       ENV.prepend "CPPFLAGS", "-I#{lmdb.opt_include}"
 
-      ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
+      ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
 
       system "./build.sh"
     end
