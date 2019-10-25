@@ -3,7 +3,7 @@ class GerbilSchemeCurrent < Formula
   homepage "https://cons.io"
   head "https://github.com/vyzo/gerbil.git"
 
-  depends_on "gambit-scheme"
+  depends_on "gambit-scheme-ober"
   depends_on "leveldb"
   depends_on "libyaml"
   depends_on "gcc"
