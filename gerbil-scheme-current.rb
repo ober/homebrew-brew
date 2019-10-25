@@ -6,6 +6,7 @@ class GerbilSchemeCurrent < Formula
   depends_on "gambit-scheme"
   depends_on "leveldb"
   depends_on "libyaml"
+  depends_on "gcc"
   depends_on "lmdb"
   depends_on "openssl@1.1"
 
@@ -30,6 +31,8 @@ class GerbilSchemeCurrent < Formula
         s.gsub! "(enable libyaml #f)", "(enable libyaml #t)"
         s.gsub! "(enable lmdb #f)", "(enable lmdb #t)"
       end
+
+      ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
 
       openssl = Formula["openssl@1.1"]
       ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl"
