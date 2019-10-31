@@ -22,7 +22,6 @@ class Confluence < Formula
     system "gxpkg", "install", "github.com/ober/confluence"
   end
 
-
   test do
     output = `#{bin}/confluence`
     assert_equal 0, $CHILD_STATUS.exitstatus
