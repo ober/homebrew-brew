@@ -6,8 +6,8 @@ class Jira < Formula
   depends_on "gerbil-scheme-ober"
 
   bottle do
-    rebuild 1
     sha256 "549134cca1947b20b3cfdbf23803042f4cae94ca68bfe7ec498c7e47d36d7f1c" => :catalina
+    sha256 "d2980b5be4b6fbff8667c2ad17c7ad4e8ac6048382cbd2349e8a3e3d375fa059" => :mojave
   end
 
   def install

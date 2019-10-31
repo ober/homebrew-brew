@@ -23,7 +23,7 @@ app:
 	@brew remove -f --ignore-dependencies $(space) || true
 	brew install --verbose --build-bottle $(space)
 	brew bottle $(space)
-	$(MAKE)	replace-sha form=$(space).rb bot=$(space)*gz
+#	$(MAKE)	replace-sha form=$(space).rb bot=$(space)*gz
 
 datadog:
 	$(MAKE) app space=datadog
