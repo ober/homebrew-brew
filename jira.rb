@@ -5,6 +5,11 @@ class Jira < Formula
   version "0.05"
   depends_on "gerbil-scheme-ober"
 
+  bottle do
+    rebuild 1
+    sha256 "549134cca1947b20b3cfdbf23803042f4cae94ca68bfe7ec498c7e47d36d7f1c" => :catalina
+  end
+
   def install
     # openssl = Formula["openssl"]
     # ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl"
