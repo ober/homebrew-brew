@@ -10,11 +10,10 @@ class Jira < Formula
     # openssl = Formula["openssl"]
     # ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl"
     # ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
-
-    ENV['GERBIL_HOME'] = "#{Formula['gerbil-scheme-ober'].libexec}"
+    gambit = Formula["gambit-scheme-ober"]
+    ENV['GERBIL_HOME'] = gambit.libexec
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-    puts ENV['PATH'], ENV['GERBIL_HOME']
-    system "gxpkg install github.com/ober/jira"
+    ENV.apppend_path "PATH", gambit.bin
     #bin.install Dir["./jira"]
     ENV['GERBIL_PATH'] = "."
     ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
