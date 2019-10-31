@@ -3,7 +3,6 @@ class Jira < Formula
   homepage "https://github.com/ober/jira"
   url "https://github.com/ober/jira.git"
   version "0.05"
-
   depends_on "gerbil-scheme-ober"
 
   def install
@@ -13,7 +12,7 @@ class Jira < Formula
     gambit = Formula["gambit-scheme-ober"]
     ENV['GERBIL_HOME'] = gambit.libexec
     ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-    ENV.apppend_path "PATH", gambit.bin
+    ENV.apppend_path "PATH", "#{gambit.opt_prefix}/current/bin"
     #bin.install Dir["./jira"]
     ENV['GERBIL_PATH'] = "."
     ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
