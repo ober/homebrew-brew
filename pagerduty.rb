@@ -6,6 +6,11 @@ class Pagerduty < Formula
 
   depends_on "gerbil-scheme-ober" => :build
 
+  bottle do
+    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    sha256 "a0b2c14a83c045e79cccf9c91fde70e7cfeb886f1b9bb75d95660b5765343c6d" => :catalina
+  end
+
   def install
     ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     gxpkg_dir = Dir.mktmpdir
