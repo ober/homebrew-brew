@@ -6,7 +6,6 @@ class Datadog < Formula
 
   depends_on "gerbil-scheme-ober" => :build
 
-
   def install
     ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
 
@@ -21,6 +20,7 @@ class Datadog < Formula
     mkdir_p bin # hack to get around bug in gxpkg
     mkdir_p "#{prefix}/pkg" # ditto
     system "gxpkg", "install", "github.com/ober/datadog"
+    rm_rf "/usr/local/lib/ober" # ssi left overs after install
   end
 
   test do

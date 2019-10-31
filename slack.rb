@@ -20,6 +20,7 @@ class Slack < Formula
     mkdir_p bin # hack to get around bug in gxpkg
     mkdir_p "#{prefix}/pkg" # ditto
     system "gxpkg", "install", "github.com/ober/slack"
+    rm_rf "/usr/local/lib/ober" # ssi left overs after install
   end
 
   test do
