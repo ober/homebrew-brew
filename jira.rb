@@ -20,12 +20,12 @@ class Jira < Formula
     gerbil = Formula["gerbil-scheme-ober"]
     ENV['GERBIL_HOME'] = "#{gerbil.libexec}"
 
-    ENV['GERBIL_PATH'] = prefix
+    ENV['GERBIL_PATH'] = "/tmp/gerbil"
 
     mkdir_p bin # hack to get around bug in gxpkg
     mkdir_p "#{prefix}/pkg" # ditto
     system "gxpkg", "install", "github.com/ober/jira"
-    rm_rf "/usr/local/lib/ober" # ssi left overs after install
+    bin.install Dir["/tmp/gerbil/bin]
   end
 
   plist_options :manual => "docs go here or something"
