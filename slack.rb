@@ -5,31 +5,21 @@ class Slack < Formula
   version "0.02"
 
   depends_on "gerbil-scheme-ober" => :build
-  depends_on "gnu-sed" => :build
-#XXX needed for openssl to be found: ln -s /usr/local/opt/openssl@1.1/include/openssl /usr/local/include
-
-  bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "b4e664e4b02fc5d5ed55fd2f263ca1a95d31b70b16c8ff0a604e3e3a91ed4582" => :mojave
-  end
 
   def install
-    openssl = Formula["openssl"]
-    ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
-    ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
-    puts "here #{openssl.opt_include}"
-    leveldb = Formula["leveldb"]
-    ENV.prepend "LDFLAGS", "-L#{leveldb.opt_lib}"
-    ENV.prepend "CPPFLAGS", "-I#{leveldb.opt_include}"
+    ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
 
-    ENV.append_path "PATH", "#{Formula['gambit-scheme-ober'].bin}"
-    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ober'].bin}"
-    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ober/current/bin"
-    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
-    ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-    system "./build.ss static"
+    gambit = Formula["gambit-scheme-ober"]
+    ENV.append_path "PATH", "#{gambit.opt_prefix}/current/bin"
 
-    bin.install Dir["./slack"]
+    gerbil = Formula["gerbil-scheme-ober"]
+    ENV['GERBIL_HOME'] = "#{gerbil.libexec}"
+
+    ENV['GERBIL_PATH'] = prefix
+
+    mkdir_p bin # hack to get around bug in gxpkg
+    mkdir_p "#{prefix}/pkg" # ditto
+    system "gxpkg", "install", "github.com/ober/slack"
   end
 
   test do
