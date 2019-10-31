@@ -25,7 +25,7 @@ class Confluence < Formula
     mkdir_p "#{gxpkg_dir}/bin" # hack to get around gerbil not making ~/.gxpkg/bin
     mkdir_p "#{gxpkg_dir}/pkg" # ditto
     system "gxpkg", "install", "github.com/ober/confluence"
-    bin.install Dir["#{gxpkg_dir}/bin"]
+    bin.install Dir["#{gxpkg_dir}/bin/confluence"]
   end
 
   test do
