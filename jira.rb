@@ -9,16 +9,14 @@ class Jira < Formula
     # openssl = Formula["openssl"]
     # ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl"
     # ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
+    ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     gambit = Formula["gambit-scheme-ober"]
-    ENV['GERBIL_HOME'] = gambit.libexec
-    ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     ENV.append_path "PATH", "#{gambit.opt_prefix}/current/bin"
-    #bin.install Dir["./jira"]
-    ENV['GERBIL_PATH'] = "."
+    ENV['GERBIL_PATH'] = prefix
     ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
-    ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-    system "gxpkg install github.com/ober/jira"
-    bin.install Dir["bin/jira"]
+    mkdir_p bin
+    mkdir_p "#{prefix}/pkg"
+    system "gxpkg", "install", "github.com/ober/jira"
   end
 
   plist_options :manual => "docs go here or something"
