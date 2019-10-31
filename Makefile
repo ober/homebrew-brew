@@ -27,6 +27,9 @@ app:
 datadog:
 	$(MAKE) app space=datadog
 
+pagerduty:
+	$(MAKE) app space=pagerduty
+
 jira:
 	$(MAKE) app space=jira
 

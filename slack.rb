@@ -4,6 +4,11 @@ class Slack < Formula
   url "https://github.com/ober/slack.git"
   version "0.02"
 
+  bottle do
+    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    sha256 "978eced31e477825f0e2f5a5074adce898c7dc967f5a89c33b0ee3e77b673ebf" => :catalina
+  end
+
   depends_on "gerbil-scheme-ober" => :build
 
   def install
