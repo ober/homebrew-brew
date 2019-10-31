@@ -6,23 +6,21 @@ class Datadog < Formula
 
   depends_on "gerbil-scheme-ober" => :build
 
-  bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master/"
-    sha256 "d4daad5388ef599cdfbaf995cadf44622f8b2ec9afd00abe92a13b4f8e47c4a6" => :mojave
-  end
 
   def install
-    openssl = Formula["openssl"]
-    ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
-    ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
-    ENV.append_path "PATH", "#{Formula['gerbil-scheme-ober'].bin}"
-    ENV.append_path "PATH", "/usr/local/opt/gambit-scheme-ober/current/bin"
-    ENV['GERBIL_HOME'] = "/usr/local/opt/gerbil-scheme-ober/libexec"
-    ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-    system "make"
+    ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
 
-    bin.install "dda"
-    bin.install_symlink "dda" => "datadog"
+    gambit = Formula["gambit-scheme-ober"]
+    ENV.append_path "PATH", "#{gambit.opt_prefix}/current/bin"
+
+    gerbil = Formula["gerbil-scheme-ober"]
+    ENV['GERBIL_HOME'] = "#{gerbil.libexec}"
+
+    ENV['GERBIL_PATH'] = prefix
+
+    mkdir_p bin # hack to get around bug in gxpkg
+    mkdir_p "#{prefix}/pkg" # ditto
+    system "gxpkg", "install", "github.com/ober/datadog"
   end
 
   test do

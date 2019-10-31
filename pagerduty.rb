@@ -1,8 +1,8 @@
-class Confluence < Formula
-  desc "confluence command line helper"
-  homepage "https://github.com/ober/confluence"
-  url "https://github.com/ober/confluence.git"
-  version "master"
+class Pagerduty < Formula
+  desc "Pagerduty command line helper"
+  homepage "https://github.com/ober/datadog"
+  url "https://github.com/ober/datadog.git"
+  version "0.02"
 
   depends_on "gerbil-scheme-ober" => :build
 
@@ -19,12 +19,11 @@ class Confluence < Formula
 
     mkdir_p bin # hack to get around bug in gxpkg
     mkdir_p "#{prefix}/pkg" # ditto
-    system "gxpkg", "install", "github.com/ober/confluence"
+    system "gxpkg", "install", "github.com/ober/pagerduty"
   end
 
-
   test do
-    output = `#{bin}/confluence`
+    output = `#{bin}/pagerduty`
     assert_equal 0, $CHILD_STATUS.exitstatus
   end
 end
