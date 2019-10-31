@@ -6,6 +6,11 @@ class Datadog < Formula
 
   depends_on "gerbil-scheme-ober" => :build
 
+  bottle do
+    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    sha256 "5a2cef97d8f0a44fe586b0a1fa3c583955596350d03bdeca1fad0985fed6028a" => :catalina
+  end
+
   def install
     ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     gxpkg_dir = Dir.mktmpdir
@@ -20,7 +25,7 @@ class Datadog < Formula
     mkdir_p "#{gxpkg_dir}/bin" # hack to get around gerbil not making ~/.gxpkg/bin
     mkdir_p "#{gxpkg_dir}/pkg" # ditto
     system "gxpkg", "install", "github.com/ober/datadog"
-    bin.install Dir["#{gxpkg_dir}/bin"]
+    bin.install Dir["#{gxpkg_dir}/bin/dda"]
   end
 
   test do
