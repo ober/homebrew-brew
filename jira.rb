@@ -23,7 +23,7 @@ class Jira < Formula
     ENV['GERBIL_HOME'] = "#{gerbil.libexec}"
 
     ENV['GERBIL_PATH'] = gxpkg_dir
-    mkdir_p "#{gxpkg_dir}/pkg" # hack to get around gerbil not making ~/.gxpkg/bin
+    mkdir_p "#{gxpkg_dir}/bin" # hack to get around gerbil not making ~/.gxpkg/bin
     mkdir_p "#{gxpkg_dir}/pkg" # ditto
     system "gxpkg", "install", "github.com/ober/jira"
     bin.install Dir["#{gxpkg_dir}/bin"]
