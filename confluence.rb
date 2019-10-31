@@ -6,6 +6,12 @@ class Confluence < Formula
 
   depends_on "gerbil-scheme-ober" => :build
 
+  bottle do
+    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    sha256 "2dcf8d1a521306298f70407a45ef188cf181c34977233739fe93e8d4fca9ea51" => :catalina
+  end
+
+
   def install
     ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     gxpkg_dir = Dir.mktmpdir
