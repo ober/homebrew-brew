@@ -6,9 +6,8 @@ class Jira < Formula
   depends_on "gerbil-scheme-ober"
 
   bottle do
-    cellar :any_skip_relocation
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "240764928e77c80b669ea6ca19fd8c9575c9c7f4d19d86c42d514f346f562451" => :catalina
+    sha256 "aee613c1cb5a58310f5edf46e4e0f3bbc81b8cc4a0bc720c2a86e44efbf1e107" => :catalina
     sha256 "d2980b5be4b6fbff8667c2ad17c7ad4e8ac6048382cbd2349e8a3e3d375fa059" => :mojave
   end
 
