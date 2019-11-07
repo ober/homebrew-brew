@@ -1,7 +1,7 @@
 class Jira < Formula
   desc "jira command line helper"
   homepage "https://github.com/ober/jira"
-  head "https://github.com/ober/jira.git"
+  url "https://github.com/ober/jira.git"
 
   version "0.07"
   depends_on "gerbil-scheme-ober"
