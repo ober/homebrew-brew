@@ -50,9 +50,9 @@ gambit-head:
 
 gerbil-head:
 	@brew remove -f --ignore-dependencies gerbil-scheme-current || true
-	brew install --HEAD --verbose --build-bottle gerbil-scheme-current
-	brew bottle gerbil-scheme-current
-	$(MAKE) replace-sha gerbil-scheme-current.rb gerbil-scheme-current*gz
+	brew install --HEAD --verbose --build-bottle --keep-tmp gerbil-scheme-current
+#	brew bottle gerbil-scheme-current
+#	$(MAKE) replace-sha gerbil-scheme-current.rb gerbil-scheme-current*gz
 
 gambit:
 	$(MAKE) app space=gambit-scheme-ober

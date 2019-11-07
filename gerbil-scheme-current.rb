@@ -22,7 +22,7 @@ class GerbilSchemeCurrent < Formula
 
     cd "src" do
       ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
-      system "git fetch --tags --force"
+      system "git", "fetch", "--tags", "--force"
       ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
 
       inreplace "std/build-features.ss" do |s|
