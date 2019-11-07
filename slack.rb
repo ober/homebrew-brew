@@ -6,7 +6,7 @@ class Slack < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "978eced31e477825f0e2f5a5074adce898c7dc967f5a89c33b0ee3e77b673ebf" => :catalina
+    sha256 "607cfb3f970497560c6faa43febb6bfda171c13945ee2db20412423d7b51a80e" => :catalina
     sha256 "3c3759391255a3d27c963acf1b8779bd395baa1f6814aaa6fa210ebbd9d7410e" => :mojave
   end
 
