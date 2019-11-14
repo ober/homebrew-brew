@@ -2,9 +2,9 @@ class Confluence < Formula
   desc "confluence command line helper"
   homepage "https://github.com/ober/confluence"
   url "https://github.com/ober/confluence.git"
-  version "master"
 
   depends_on "gerbil-scheme-ober" => :build
+  version "0.02"
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
