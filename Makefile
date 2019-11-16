@@ -4,7 +4,7 @@ default: build
 build: jira confluence slack datadog
 SED=gsed
 
-$(eval PATH := "/usr/local/bin:$(PATH)")
+
 
 replace-sha-full:
 	$(eval old := $(subst ",, $(word 4, $(shell grep sha256 $(form)))))
@@ -51,9 +51,8 @@ gambit-head:
 	$(MAKE) replace-sha gambit-scheme-current.rb gambit-scheme-current*gz
 
 gerbil-head:
-
-	@brew remove -f --ignore-dependencies gerbil-scheme-current || true
-	brew install --HEAD --verbose gerbil-scheme-current
+	@/usr/local/bin/brew remove -f --ignore-dependencies gerbil-scheme-current || true
+	/usr/local/bin/brew install --HEAD --verbose gerbil-scheme-current
 	ln -s /usr/local/Cellar/gerbil-scheme-current/HEAD /usr/local/opt/gerbil-scheme-current
 #	brew bottle gerbil-scheme-current
 #	$(MAKE) replace-sha gerbil-scheme-current.rb gerbil-scheme-current*gz
