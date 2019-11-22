@@ -4,6 +4,8 @@ default: build
 build: jira confluence slack datadog
 SED=gsed
 
+
+
 replace-sha-full:
 	$(eval old := $(subst ",, $(word 4, $(shell grep sha256 $(form)))))
 	$(eval new := $(word 1, $(shell shasum -a 256 $(bottle))))
@@ -24,7 +26,9 @@ app:
 	brew install --verbose --build-bottle $(space)
 	brew bottle $(space)
 
+datadog: $(eval PATH := "$(PATH):/usr/local/bin")
 datadog:
+
 	$(MAKE) app space=datadog
 
 pagerduty:
