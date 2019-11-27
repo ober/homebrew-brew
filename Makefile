@@ -54,7 +54,7 @@ gambit-head:
 
 gerbil-head:
 	@/usr/local/bin/brew remove -f --ignore-dependencies gerbil-scheme-current || true
-	ln -s /usr/local/Cellar/gerbil-scheme-current/HEAD /usr/local/opt/gerbil-scheme-current
+	ln -s /usr/local/Cellar/gerbil-scheme-current/HEAD /usr/local/opt/gerbil-scheme-current || true
 	/usr/local/bin/brew install --HEAD --verbose gerbil-scheme-current|| true
 #	brew bottle gerbil-scheme-current
 #	$(MAKE) replace-sha gerbil-scheme-current.rb gerbil-scheme-current*gz
