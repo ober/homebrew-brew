@@ -34,7 +34,7 @@ class GerbilSchemeCurrent < Formula
 
       ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
 
-      openssl = Formula["openssl"]
+      openssl = Formula["openssl@1.1"]
       ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl"
       ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
 
