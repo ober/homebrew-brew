@@ -5,7 +5,7 @@ class GambitSchemeOber < Formula
   sha256 "a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
 
   depends_on "gcc" => :build
-  depends_on "openssl@1.1" => :build
+  depends_on "openssl" => :build
   depends_on "texinfo" => :build
 
   bottle do
@@ -26,9 +26,9 @@ class GambitSchemeOber < Formula
       s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     end
 
-    ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
-    openssl = Formula["openssl@1.1"]
-    ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
+    ENV['CC'] = Formula['gcc@8'] #.opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+    openssl = Formula["openssl"]
+    ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lcrypto -lssl"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
     system "./configure", *args
     system "make"
