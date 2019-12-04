@@ -1,0 +1,27 @@
+*** Random notes on issues.
+
+**** openssl linking issues.
+#+BEGIN_SRC sh
+Undefined symbols for architecture x86_64:
+  "_CRYPTO_cleanup_all_ex_data", referenced from:
+      ____cleanup_io_module in libgambit.a(os_io.o)
+  "_ERR_free_strings", referenced from:
+      ____cleanup_io_module in libgambit.a(os_io.o)
+  "_EVP_cleanup", referenced from:
+      ____cleanup_io_module in libgambit.a(os_io.o)
+  "_OPENSSL_add_all_algorithms_noconf", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSL_library_init", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSL_load_error_strings", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSL_state", referenced from:
+      ____device_tcp_client_close_raw_virt in libgambit.a(os_io.o)
+  "_SSLeay", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSLv23_client_method", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSLv23_server_method", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+#+END_SRC
+**** Resolution use openssl pre 1.1, and gcc8, not gcc9.
