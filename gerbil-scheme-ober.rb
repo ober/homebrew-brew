@@ -11,7 +11,7 @@ class GerbilSchemeOber < Formula
 
   depends_on "gambit-scheme-ober"
   depends_on "leveldb"
-  depends_on "gcc"
+  depends_on "gcc@9"
   depends_on "libyaml"
   depends_on "lmdb"
   depends_on "openssl"
