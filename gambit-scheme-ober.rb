@@ -26,7 +26,7 @@ class GambitSchemeOber < Formula
       s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     end
 
-    ENV['CC'] = Formula['gcc'] #.opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+    ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     openssl = Formula["openssl"]
     ENV.prepend "LDFLAGS", "-v -L#{openssl.opt_lib} -lcrypto -lssl"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
