@@ -24,4 +24,4 @@ Undefined symbols for architecture x86_64:
   "_SSLv23_server_method", referenced from:
       ____os_make_tls_context in libgambit.a(os_io.o)
 #+END_SRC
-**** Resolution use openssl pre 1.1, and gcc8, not gcc9.
+**** Resolution use openssl pre 1.1, and gcc8, not gcc9. At least on osx
