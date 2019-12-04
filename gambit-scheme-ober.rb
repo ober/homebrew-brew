@@ -4,7 +4,7 @@ class GambitSchemeOber < Formula
   url "https://github.com/gambit/gambit/archive/v4.9.3.tar.gz"
   sha256 "a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
 
-  depends_on "gcc" => :build
+  depends_on "gcc@8" => :build
   depends_on "openssl" => :build
   depends_on "texinfo" => :build
 
@@ -26,7 +26,7 @@ class GambitSchemeOber < Formula
       s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     end
 
-    ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+    ENV['CC'] = "gcc-8" #Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     openssl = Formula["openssl"]
     ENV.prepend "LDFLAGS", "-v -L/usr/local/opt/openssl/lib -lcrypto -lssl"
     ENV.prepend "CPPFLAGS", "-I/usr/local/opt/openssl/include"
