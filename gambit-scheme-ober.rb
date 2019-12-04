@@ -10,7 +10,8 @@ class GambitSchemeOber < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "40e0af8afdc316663d3f3d50b28f6e2fd21479c753d79a3d4f49d5472f2550a8" => :mojave
+    rebuild 4
+    sha256 "ae6b5098c606ccda22bccea4d0d471a5f58a7b0013ea6e39de2bfd729e28f6a4" => :mojave
   end
 
   def install
