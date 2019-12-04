@@ -11,7 +11,7 @@ class GerbilSchemeOber < Formula
 
   depends_on "gambit-scheme-ober"
   depends_on "leveldb"
-  depends_on "gcc@9"
+  depends_on "gcc"
   depends_on "libyaml"
   depends_on "lmdb"
   depends_on "openssl"
@@ -57,7 +57,7 @@ class GerbilSchemeOber < Formula
       ENV.prepend "LDFLAGS", "-L#{Formula["lmdb"].opt_lib}"
       ENV.prepend "LDFLAGS", "-L#{Formula["leveldb"].opt_lib}"
 
-      ENV['CC'] =  Formula['gcc@9'].opt_bin/Formula['gcc@9'].aliases.first.gsub("@","-")
+      ENV['CC'] =  Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
       ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
 
       system "./build.sh"
