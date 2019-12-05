@@ -1,7 +1,7 @@
 .PHONY: gerbil-scheme-ober gambit-scheme-ober slack confluence datadog jira sha lala replace-sha replace-sha-full
 default: build
 
-build: jira confluence slack datadog
+build: jira confluence slack datadog pagerduty
 SED=gsed
 
 replace-sha-full:
@@ -26,7 +26,6 @@ app:
 
 datadog: $(eval PATH := "$(PATH):/usr/local/bin")
 datadog:
-
 	$(MAKE) app space=datadog
 
 pagerduty:
