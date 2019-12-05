@@ -29,7 +29,7 @@ class GambitSchemeOber < Formula
 
     ENV['CC'] = "/usr/local/bin/gcc-8" #Formula['gcc@8'].opt_bin/Formula['gcc@8'].aliases.first.gsub("@","-")
     openssl = Formula["openssl@1.1"]
-    ENV.prepend "LDFLAGS", "-v -L#{openssl.opt_lib} -lcrypto -lssl"
+    ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lcrypto -lssl"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
     system "./configure", *args
     system "make"
