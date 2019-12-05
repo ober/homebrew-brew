@@ -24,4 +24,53 @@ Undefined symbols for architecture x86_64:
   "_SSLv23_server_method", referenced from:
       ____os_make_tls_context in libgambit.a(os_io.o)
 #+END_SRC
-**** Resolution use openssl pre 1.1, and gcc8, not gcc9. At least on osx
+
+**** caused by not having -lssl -lcrypto in LDFLAGS
+#+BEGIN_SRC
+Undefined symbols for architecture x86_64:
+  "_CRYPTO_cleanup_all_ex_data", referenced from:
+      ____cleanup_io_module in libgambit.a(os_io.o)
+  "_ERR_free_strings", referenced from:
+      ____cleanup_io_module in libgambit.a(os_io.o)
+  "_EVP_cleanup", referenced from:
+      ____cleanup_io_module in libgambit.a(os_io.o)
+  "_OPENSSL_add_all_algorithms_noconf", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSL_library_init", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSL_load_error_strings", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSL_state", referenced from:
+      ____device_tcp_client_close_raw_virt in libgambit.a(os_io.o)
+  "_SSLeay", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSLv23_client_method", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSLv23_server_method", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+#+END_SRC
+
+**** caused by openssl@1.1 being default in homebrew?
+- Make sure openssl brew is removed.
+- symlink /usr/local/opt/openssl -> openssl@1.1
+- or use openssl@1.1 explicitly in formula
+#+BEGIN_SRC sh
+Undefined symbols for architecture x86_64:
+  "_DH_set0_pqg", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_OPENSSL_init_ssl", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_OpenSSL_version_num", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSL_CTX_set_options", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_SSL_is_init_finished", referenced from:
+      ____device_tcp_client_close_raw_virt in libgambit.a(os_io.o)
+  "_TLS_client_method", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+  "_TLS_server_method", referenced from:
+      ____os_make_tls_context in libgambit.a(os_io.o)
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+ERROR IN ##main -- target link failed while linking "/private/tmp/gerbil-scheme-ober-20191204-53002-599jzu/gerbil-0.15.1/bin/gxprof_.o" "/private/tmp/gerbil-scheme-ober-20191204-53002-599jzu/gerbil-0.15.1/bin/gxprof.o"
+#+END_SRC
