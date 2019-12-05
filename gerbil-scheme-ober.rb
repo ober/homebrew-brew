@@ -6,12 +6,12 @@ class GerbilSchemeOber < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "f6549ed55207cbd7cce6cfee3d1a18113de57b6bdc1aab0ddd93db3ae65c5295" => :mojave
+    rebuild 4
+    sha256 "ad9914e1b8bf8877b9f501db5f2dca7d34f207a46262746c8b7f2cbd0fda17fc" => :mojave
   end
 
   depends_on "gambit-scheme-ober"
   depends_on "leveldb"
-#  depends_on "gcc"
   depends_on "libyaml"
   depends_on "lmdb"
   depends_on "openssl@1.1"
@@ -40,8 +40,6 @@ class GerbilSchemeOber < Formula
       inreplace "std/net/request.ss" do |s|
         s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)))"
       end
-
-      #ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
 
       openssl = Formula["openssl@1.1"]
       ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl -lcrypto"
