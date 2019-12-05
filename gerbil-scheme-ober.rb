@@ -11,15 +11,10 @@ class GerbilSchemeOber < Formula
 
   depends_on "gambit-scheme-ober"
   depends_on "leveldb"
-  depends_on "gcc@8"
+  depends_on "gcc"
   depends_on "libyaml"
   depends_on "lmdb"
   depends_on "openssl"
-
-  patch :p1 do
-    url "https://raw.githubusercontent.com/ober/homebrew-brew/master/tty-reset.patch"
-    sha256 "195d07e19eeed95dc20aa73a1e897f3c282ef57809e3d4845f6fbbfd562ad408"
-  end
 
   def install
     bins = %w[
@@ -46,19 +41,26 @@ class GerbilSchemeOber < Formula
         s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)))"
       end
 
-      openssl = Formula["openssl"]
-      ENV.prepend "LDFLAGS", "-v"
-      ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lcrypto -lssl"
-      ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
-      ENV.prepend "CPPFLAGS", "-I#{Formula["libyaml"].opt_include}"
-      ENV.prepend "CPPFLAGS", "-I#{Formula["leveldb"].opt_include}"
-      ENV.prepend "CPPFLAGS", "-I#{Formula["lmdb"].opt_include}"
-      ENV.prepend "LDFLAGS", "-L#{Formula["libyaml"].opt_lib}"
-      ENV.prepend "LDFLAGS", "-L#{Formula["lmdb"].opt_lib}"
-      ENV.prepend "LDFLAGS", "-L#{Formula["leveldb"].opt_lib}"
+      ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
 
-      ENV['CC'] = "/usr/local/bin/gcc-8"
+      openssl = Formula["openssl"]
+      ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl -lcrypto"
+      ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
+
+      yaml = Formula["libyaml"]
+      ENV.prepend "LDFLAGS", "-L#{yaml.opt_lib}"
+      ENV.prepend "CPPFLAGS", "-I#{yaml.opt_include}"
+
+      leveldb = Formula["leveldb"]
+      ENV.prepend "LDFLAGS", "-L#{leveldb.opt_lib}"
+      ENV.prepend "CPPFLAGS", "-I#{leveldb.opt_include}"
+
+      lmdb = Formula["lmdb"]
+      ENV.prepend "LDFLAGS", "-L#{lmdb.opt_lib}"
+      ENV.prepend "CPPFLAGS", "-I#{lmdb.opt_include}"
+
       ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
+
       system "./build.sh"
     end
 
@@ -70,7 +72,7 @@ class GerbilSchemeOber < Formula
   end
 
   test do
-    ENV.append_path "PATH", "#{Formula["gambit-scheme"].opt_prefix}/current/bin"
+    ENV.append_path "PATH", "#{Formula["gerbil-scheme-ober"].opt_prefix}/current/bin"
     assert_equal "0123456789", shell_output("#{libexec}/bin/gxi -e \"(for-each write '(0 1 2 3 4 5 6 7 8 9))\"")
   end
 end
