@@ -11,7 +11,7 @@ class GerbilSchemeOber < Formula
 
   depends_on "gambit-scheme-ober"
   depends_on "leveldb"
-  depends_on "gcc"
+#  depends_on "gcc"
   depends_on "libyaml"
   depends_on "lmdb"
   depends_on "openssl@1.1"
@@ -41,7 +41,7 @@ class GerbilSchemeOber < Formula
         s.gsub! "(http-request 'POST url headers data [] #f)))", "(http-request 'POST url headers data [] #t)))"
       end
 
-      ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+      #ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
 
       openssl = Formula["openssl@1.1"]
       ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl -lcrypto"
