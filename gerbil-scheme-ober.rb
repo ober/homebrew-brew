@@ -48,7 +48,7 @@ class GerbilSchemeOber < Formula
 
       openssl = Formula["openssl"]
       ENV.prepend "LDFLAGS", "-v"
-      ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
+      ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lcrypto -lssl"
       ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
       ENV.prepend "CPPFLAGS", "-I#{Formula["libyaml"].opt_include}"
       ENV.prepend "CPPFLAGS", "-I#{Formula["leveldb"].opt_include}"
