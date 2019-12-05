@@ -4,14 +4,13 @@ class GambitSchemeOber < Formula
   url "https://github.com/gambit/gambit/archive/v4.9.3.tar.gz"
   sha256 "a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
 
-  #depends_on "gcc@8" => :build
   depends_on "openssl@1.1" => :build
   depends_on "texinfo" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    rebuild 4
-    sha256 "ae6b5098c606ccda22bccea4d0d471a5f58a7b0013ea6e39de2bfd729e28f6a4" => :mojave
+    rebuild 5
+    sha256 "967c621f6c142b23fa1543184e7fb000018d227cbda215bc02281274763a7694" => :mojave
   end
 
   def install
@@ -27,7 +26,6 @@ class GambitSchemeOber < Formula
       s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     end
 
-    #ENV['CC'] = "/usr/local/bin/gcc-8" #Formula['gcc@8'].opt_bin/Formula['gcc@8'].aliases.first.gsub("@","-")
     openssl = Formula["openssl@1.1"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lcrypto -lssl"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
