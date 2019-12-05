@@ -8,8 +8,8 @@ class Pagerduty < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    sha256 "e7f86fb8d086ab49c78b10ce1d01d3c3e1ece130142f23936c20c6e540ad757f" => :catalina
-    sha256 "5b99a71f2f16276e6a1913678738a23edcc563e5abc9b3dfd29d567357fa63ef" => :mojave
+    rebuild 1
+    sha256 "14d66a85c1611ab5c2a768e56e5eb6b38f4bdbb95294895ccb8b08c098205162" => :mojave
   end
 
   def install
