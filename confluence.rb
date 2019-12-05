@@ -8,8 +8,8 @@ class Confluence < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
-    rebuild 1
-    sha256 "a2f73660867e10e66672c5500c99df005b5947fa8464ddfc759e4f12da6b747a" => :mojave
+    rebuild 2
+    sha256 "bff53007921e3d50494624e2f28885216a4bca360d6252c9caac073e70471636" => :mojave
   end
 
   def install
