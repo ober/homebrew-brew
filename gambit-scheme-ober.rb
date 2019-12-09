@@ -18,6 +18,7 @@ class GambitSchemeOber < Formula
     args = %W[
       --prefix=#{prefix}
       --enable-multiple-versions
+      --enable-single-host
       --enable-default-runtime-options=f8,-8,t8
       --enable-openssl
     ]
