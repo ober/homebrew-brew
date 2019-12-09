@@ -9,6 +9,7 @@ class GerbilSchemeCurrent < Formula
   depends_on "gcc"
   depends_on "lmdb"
   depends_on "openssl"
+  depends_on "zlib"
 
   def install
     bins = %w[
@@ -37,6 +38,10 @@ class GerbilSchemeCurrent < Formula
       openssl = Formula["openssl"]
       ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl -lcrypto"
       ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
+
+      zlib = Formula["zlib"]
+      ENV.prepend "LDFLAGS", "-L#{zlib.opt_lib} -lz"
+      ENV.prepend "CPPFLAGS", "-I#{zlib.opt_include}"
 
       yaml = Formula["libyaml"]
       ENV.prepend "LDFLAGS", "-L#{yaml.opt_lib}"
