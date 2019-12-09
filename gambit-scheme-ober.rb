@@ -6,6 +6,7 @@ class GambitSchemeOber < Formula
 
   depends_on "openssl@1.1" => :build
   depends_on "texinfo" => :build
+  depends_on "zlib" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-brew/raw/master"
@@ -28,6 +29,11 @@ class GambitSchemeOber < Formula
     openssl = Formula["openssl@1.1"]
     ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lcrypto -lssl"
     ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
+
+    zlib = Formula["zlib"]
+    ENV.prepend "LDFLAGS", "-L#{zlib.opt_lib} -lz"
+    ENV.prepend "CPPFLAGS", "-I#{zlib.opt_include}"
+
     system "./configure", *args
     system "make"
     ENV.deparallelize
