@@ -60,7 +60,7 @@ class GerbilSchemeCurrent < Formula
       system "./build.sh"
     end
 
-    libexec.install "bin", "lib", "doc"
+    libexec.install "bin", "lib", "doc", "etc"
 
     bins.each do |b|
       bin.install_symlink libexec/"bin/#{b}"
