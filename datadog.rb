@@ -7,7 +7,7 @@ class Datadog < Formula
   depends_on "gerbil-scheme-ober" => :build
 
   bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    root_url "https://github.com/ober/homebrew-artifacts/raw/master"
     sha256 "9d782f88d50ccdc3d7eac315b1a4b12bd855b530b251b2686bfd79bdc7b8914e" => :mojave
   end
 

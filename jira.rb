@@ -7,7 +7,7 @@ class Jira < Formula
   depends_on "gerbil-scheme-ober"
 
   bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    root_url "https://github.com/ober/homebrew-artifacts/raw/master"
     sha256 "1af78832e4e047b3afbd38afefe6daee5c3f17dd8d983dc1aa051bd094786359" => :mojave
   end
 

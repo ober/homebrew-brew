@@ -7,7 +7,7 @@ class Pagerduty < Formula
   depends_on "gerbil-scheme-ober" => :build
 
   bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    root_url "https://github.com/ober/homebrew-artifacts/raw/master"
     rebuild 1
     sha256 "14d66a85c1611ab5c2a768e56e5eb6b38f4bdbb95294895ccb8b08c098205162" => :mojave
   end

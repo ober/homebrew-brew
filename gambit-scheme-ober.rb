@@ -9,7 +9,7 @@ class GambitSchemeOber < Formula
   depends_on "zlib" => :build
 
   bottle do
-    root_url "https://github.com/ober/homebrew-brew/raw/master"
+    root_url "https://github.com/ober/homebrew-artifacts/raw/master"
     rebuild 8
     sha256 "373b6bb8ead8604673408ec6c0579b1612d1058ec3d0bb309f290f082c1add44" => :mojave
   end
