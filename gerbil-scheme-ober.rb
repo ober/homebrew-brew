@@ -16,6 +16,10 @@ class GerbilSchemeOber < Formula
   depends_on "lmdb"
   depends_on "openssl@1.1"
 
+  head do
+    url "https://github.com/vyzo/gerbil.git"
+  end
+
   def install
     bins = %w[
       gxi
