@@ -8,7 +8,7 @@ class Datadog < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"
-    sha256 "6b37fd0c09082878aefa4f1413a16cc0d84f3a86d4bdc69d8b904b38f6a99f3a" => :mojave
+    sha256 "c8b40d063b7478923d9e2da0ddad723ba0c4e6b5de39de01aad2fe9872b27a87" => :mojave
   end
 
   def install
