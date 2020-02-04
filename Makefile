@@ -19,10 +19,26 @@ else
 	$(MAKE) replace-sha-full form=$(form) bottle=$(strip $(bottle))
 endif
 
-app:
+hide-shared:
+	@./hide-shared-libs -d /usr/local/opt/openssl@1.1 -m
+	@./hide-shared-libs -d /usr/local/opt/libyaml -m
+	@./hide-shared-libs -d /usr/local/opt/zlib -m
+	@./hide-shared-libs -d /usr/local/opt/lmdb -m
+	@./hide-shared-libs -d /usr/local/opt/leveldb -m
+
+restore-shared:
+	@./hide-shared-libs -d /usr/local/opt/openssl@1.1 -r
+	@./hide-shared-libs -d /usr/local/opt/libyaml -r
+	@./hide-shared-libs -d /usr/local/opt/zlib -r
+	@./hide-shared-libs -d /usr/local/opt/lmdb -r
+	@./hide-shared-libs -d /usr/local/opt/leveldb -r
+
+
+app: hide-shared
 	@brew remove -f --ignore-dependencies $(space) || true
 	brew install --verbose --build-bottle $(space)
 	brew bottle $(space)
+	$(MAKE) restore-shared
 
 datadog: $(eval PATH := "$(PATH):/usr/local/bin")
 datadog:
@@ -52,7 +68,7 @@ gambit-head:
 gerbil-head:
 	@/usr/local/bin/brew remove -f --ignore-dependencies gerbil-scheme-current || true
 	ln -s /usr/local/Cellar/gerbil-scheme-current/HEAD /usr/local/opt/gerbil-scheme-current || true
-	/usr/local/bin/brew install --HEAD --verbose gerbil-scheme-current|| true
+	/usr/local/bin/brew install --HEAD --verbose gerbil-scheme-current || true
 #	brew bottle gerbil-scheme-current
 #	$(MAKE) replace-sha gerbil-scheme-current.rb gerbil-scheme-current*gz
 
