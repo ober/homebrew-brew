@@ -1,4 +1,4 @@
-.PHONY: gerbil-scheme-ober gambit-scheme-ober slack confluence datadog jira sha lala replace-sha replace-sha-full
+.PHONY: gerbil-scheme-ober gambit-scheme-ober slack confluence datadog jira sha replace-sha replace-sha-full
 default: build
 
 build: jira confluence slack datadog pagerduty
