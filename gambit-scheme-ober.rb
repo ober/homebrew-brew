@@ -4,7 +4,7 @@ class GambitSchemeOber < Formula
   url "https://github.com/gambit/gambit/archive/v4.9.3.tar.gz"
   sha256 "a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
 
-  depends_on "openssl@1.1" => :build
+  depends_on "openssl@1.1"
   depends_on "texinfo" => :build
   depends_on "zlib" => :build
 
@@ -17,7 +17,7 @@ class GambitSchemeOber < Formula
   def install
     args = %W[
       --prefix=#{prefix}
-#      --enable-multiple-versions
+      --enable-multiple-versions
       --enable-single-host
       --enable-default-runtime-options=f8,-8,t8
       --enable-openssl
@@ -36,9 +36,15 @@ class GambitSchemeOber < Formula
     ENV.prepend "CPPFLAGS", "-I#{zlib.opt_include}"
 
     system "./configure", *args
+
+    # Fixed in gambit HEAD, but they haven't cut a release
+    inreplace "config.status" do |s|
+      s.gsub! %r{/usr/local/opt/openssl(?!@1\.1)}, "/usr/local/opt/openssl@1.1"
+    end
+    system "./config.status"
+
     system "make"
     ENV.deparallelize
-
     system "make", "install"
   end
 
