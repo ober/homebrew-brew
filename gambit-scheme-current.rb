@@ -21,7 +21,10 @@ class GambitSchemeCurrent < Formula
     #ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
 
     system "./configure", *args
+    system "make", "bootstrap"
+    system "make", "bootclean"
     system "make"
+    system "make", "modules"
     ENV.deparallelize
     system "make", "install"
   end
