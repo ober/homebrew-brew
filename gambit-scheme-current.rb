@@ -9,7 +9,6 @@ class GambitSchemeCurrent < Formula
   def install
     args = %W[
       --prefix=#{prefix}
-#      --enable-single-host
       --enable-multiple-versions
       --enable-default-runtime-options=f8,-8,t8
       --enable-openssl
