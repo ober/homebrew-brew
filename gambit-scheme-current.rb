@@ -3,25 +3,26 @@ class GambitSchemeCurrent < Formula
   homepage "http://gambitscheme.org"
   head "https://github.com/gambit/gambit.git"
 
-  depends_on "openssl" => :build
+  depends_on "openssl@1.1"
   depends_on "gcc" => :build
 
   def install
     args = %W[
       --prefix=#{prefix}
+      --enable-single-host
+      --enable-multiple-versions
+      --enable-default-runtime-options=f8,-8,t8
+      --enable-openssl
     ]
 
     # inreplace "lib/os_io.c" do |s|
     #   s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     # end
+    #ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
 
-    ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
-    openssl = Formula["openssl"]
-    ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib}"
-    ENV.prepend "CPPFLAGS", "-I#{openssl.opt_include}"
-    system "./configure"
-    ENV.deparallelize
+    system "./configure", *args
     system "make"
+    ENV.deparallelize
     system "make", "install"
   end
 
