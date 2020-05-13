@@ -4,7 +4,7 @@ class GambitSchemeCurrent < Formula
   head "https://github.com/gambit/gambit.git"
 
   depends_on "openssl@1.1"
-  depends_on "gcc" => :build
+  #depends_on "gcc" => :build
 
   def install
     args = %W[
