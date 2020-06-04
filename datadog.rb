@@ -2,9 +2,9 @@ class Datadog < Formula
   desc "Datadog command line helper"
   homepage "https://github.com/ober/datadog"
   url "https://github.com/ober/datadog.git"
-  version "0.13"
+  version "0.15"
 
-  depends_on "gerbil-scheme-ober" => :build
+  depends_on "gerbil-scheme" => :build
 
   bottle do
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"
@@ -12,13 +12,13 @@ class Datadog < Formula
   end
 
   def install
-    ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+    #ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     gxpkg_dir = Dir.mktmpdir
 
-    gambit = Formula["gambit-scheme-ober"]
+    gambit = Formula["gambit-scheme"]
     ENV.append_path "PATH", "#{gambit.opt_prefix}/current/bin"
 
-    gerbil = Formula["gerbil-scheme-ober"]
+    gerbil = Formula["gerbil-scheme"]
     ENV['GERBIL_HOME'] = "#{gerbil.libexec}"
 
     ENV['GERBIL_PATH'] = gxpkg_dir
@@ -29,7 +29,7 @@ class Datadog < Formula
   end
 
   test do
-    output = `#{bin}/datadog`
+    output = `#{bin}/dda`
     assert_equal 0, $CHILD_STATUS.exitstatus
   end
 end
