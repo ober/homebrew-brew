@@ -3,9 +3,13 @@ class GambitSchemeOber < Formula
   homepage "https://github.com/gambit/gambit"
   url "https://github.com/gambit/gambit/archive/v4.9.3.tar.gz"
   sha256 "a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
-  revision 2
+  revision 9
 
   depends_on "openssl@1.1"
+
+  bottle do
+    sha256 "5db5d4de074d0948947b2cd983c48ca04021c6b702bfe1254bb146048b058c81" => :mojave
+  end
 
   def install
     args = %W[
