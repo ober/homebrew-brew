@@ -10,6 +10,7 @@ class GambitSchemeOber < Formula
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"
     rebuild 9
     sha256 "5db5d4de074d0948947b2cd983c48ca04021c6b702bfe1254bb146048b058c81" => :mojave
+    sha256 "a859bb216c02f871b481e45dbdce9f2c839309431f202c23606487ff274741eb" => :catalina
   end
 
   def install
