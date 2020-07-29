@@ -59,6 +59,12 @@ confluence:
 gerbil:
 	$(MAKE) app space=gerbil-scheme-ober
 
+gerbil-gcc:
+	$(MAKE) app space=gerbil-scheme-gcc
+
+gambit-gcc:
+	$(MAKE) app space=gambit-scheme-gcc
+
 gambit-head:
 	@brew remove -f --ignore-dependencies gambit-scheme-current || true
 	brew install --HEAD --verbose --build-bottle gambit-scheme-current
