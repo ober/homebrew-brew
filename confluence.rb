@@ -4,7 +4,7 @@ class Confluence < Formula
   url "https://github.com/ober/confluence.git"
 
   depends_on "gerbil-scheme-ober" => :build
-  version "0.09"
+  version "0.10"
 
   bottle do
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"
