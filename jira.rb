@@ -12,7 +12,7 @@ class Jira < Formula
   end
 
   def install
-    ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+    #ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
     gxpkg_dir = Dir.mktmpdir
 
     gambit = Formula["gambit-scheme-ober"]
