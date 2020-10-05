@@ -1,4 +1,4 @@
-class GerbilScheme < Formula
+class GerbilSchemeGcc < Formula
   desc "Opinionated dialect of Scheme designed for Systems Programming"
   homepage "https://cons.io"
   url "https://github.com/vyzo/gerbil/archive/v0.16.tar.gz"

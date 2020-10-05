@@ -1,4 +1,4 @@
-class GambitScheme < Formula
+class GambitSchemeGcc < Formula
   desc "Gambit Scheme is an implementation of the Scheme Language"
   homepage "https://github.com/gambit/gambit"
   url "https://github.com/gambit/gambit/archive/v4.9.3.tar.gz"
