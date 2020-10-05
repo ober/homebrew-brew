@@ -19,7 +19,7 @@ class Datadog < Formula
     ENV.append_path "PATH", "#{gambit.opt_prefix}/current/bin"
 
     gerbil = Formula["gerbil-scheme"]
-    ENV['GERBIL_HOME'] = "#{gerbil}"
+    ENV['GERBIL_HOME'] = "#{gerbil.opt_prefix}"
 
     ENV['GERBIL_PATH'] = gxpkg_dir
     mkdir_p "#{gxpkg_dir}/bin" # hack to get around gerbil not making ~/.gxpkg/bin
