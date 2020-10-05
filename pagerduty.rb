@@ -19,7 +19,7 @@ class Pagerduty < Formula
     ENV.append_path "PATH", "#{gambit.opt_prefix}/current/bin"
 
     gerbil = Formula["gerbil-scheme-ober"]
-    ENV['GERBIL_HOME'] = "#{gerbil.libexec}"
+    ENV['GERBIL_HOME'] = "#{gerbil}"
 
     ENV['GERBIL_PATH'] = gxpkg_dir
     mkdir_p "#{gxpkg_dir}/bin" # hack to get around gerbil not making ~/.gxpkg/bin
