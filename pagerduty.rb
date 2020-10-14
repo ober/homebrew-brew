@@ -2,7 +2,7 @@ class Pagerduty < Formula
   desc "Pagerduty command line helper"
   homepage "https://github.com/ober/datadog"
   url "https://github.com/ober/datadog.git"
-  version "0.09"
+  version "0.10"
 
   depends_on "gerbil-scheme-ober" => :build
 
