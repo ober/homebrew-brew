@@ -8,7 +8,7 @@ class Pagerduty < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"
-    sha256 "b10d6f1e4c4e5a943949d516a04008c2ffd347b7f03972a411bf81e9d546b5ee" => :catalina
+    sha256 "b98cef387bda20c6aeb4a569a3f4a06b53629845064092825c9f79596e83f3fd" => :catalina
   end
 
   def install
