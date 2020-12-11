@@ -2,7 +2,7 @@ class Slack < Formula
   desc "Slack command line helper"
   homepage "https://github.com/ober/slack"
   url "https://github.com/ober/slack.git"
-  version "0.06"
+  version "0.07"
 
   bottle do
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"

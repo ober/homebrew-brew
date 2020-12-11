@@ -33,7 +33,6 @@ restore-shared:
 	@./hide-shared-libs -d /usr/local/opt/lmdb -r
 	@./hide-shared-libs -d /usr/local/opt/leveldb -r
 
-
 app:
 	@brew remove -f --ignore-dependencies $(space) || true
 	brew install --verbose --build-bottle $(space)
