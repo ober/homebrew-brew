@@ -3,7 +3,7 @@ class Jira < Formula
   homepage "https://github.com/ober/jira"
   url "https://github.com/ober/jira.git"
 
-  version "0.14"
+  version "0.15"
   depends_on "gerbil-scheme-ober"
 
   bottle do
