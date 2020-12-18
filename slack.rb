@@ -6,7 +6,7 @@ class Slack < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"
-    sha256 "670974d34f99f8332850c21a30a7f342afcb3aee9982f20f8e4ed2c25991ff01" => :mojave
+    sha256 "ab9017ffe8d8580ecd2d12420fd673c428945889aea2bd42570aa04daad492b0" => :mojave
   end
 
   depends_on "gerbil-scheme-ober" => :build
