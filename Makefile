@@ -87,3 +87,7 @@ cycle: remove-all install-all
 	@echo "All done!"
 
 system: gambit gerbil
+
+static:
+	docker build -t centos-static .
+	docker tag centos-static jaimef/centos:static
