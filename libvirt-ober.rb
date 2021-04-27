@@ -53,6 +53,10 @@ class LibvirtOber < Formula
       s.gsub! "if (is_reg && !dynamicOwnership)", "if (is_reg)"
     end
 
+    inreplace "src/qemu/test_libvirtd_qemu.aug.in" do |s|
+      s.gsub! '{ "dynamic_ownership" = "1" }', '{ "dynamic_ownership" = "0" }'
+    end
+
     mkdir "build" do
       args = %W[
         --localstatedir=#{var}
