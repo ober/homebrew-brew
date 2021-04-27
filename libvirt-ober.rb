@@ -49,8 +49,8 @@ class LibvirtOber < Formula
   end
 
   def install
-    inreplace "src/qemu/qemu_domain.c" do |s|
-      s.gsub! "if (is_reg && !dynamicOwnership)", "if (is_reg)"
+    inreplace "src/storage/storage_util.c" do |s|
+      s.gsub! '_("cannot chown '%s' to (%u, %u)"),', '_("XXX cant chown '%s' to (%u, %u)"),'
     end
 
     inreplace "src/qemu/test_libvirtd_qemu.aug.in" do |s|
