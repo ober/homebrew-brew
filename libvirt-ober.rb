@@ -63,7 +63,7 @@ class LibvirtOber < Formula
         -Dinit_script=none
       ]
 
-      system "meson", "configure", "--help" #*std_meson_args, *args, ".."
+      system "meson", *std_meson_args, *args, ".."
       system "meson", "compile"
       system "meson", "install"
     end
