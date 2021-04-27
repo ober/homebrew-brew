@@ -52,7 +52,6 @@ class LibvirtOber < Formula
     inreplace "src/qemu/qemu_domain.c" do |s|
       s.gsub! "if (is_reg && !dynamicOwnership)", "if (is_reg && dynamicOwnership)"
     end
-    system "grep", "dynamicOwnership", "src/qemu/qemu_domain.c"
 
     mkdir "build" do
       args = %W[
@@ -64,7 +63,7 @@ class LibvirtOber < Formula
         -Dinit_script=none
       ]
 
-      system "meson", *std_meson_args, *args, ".."
+      system "meson", "--help" #*std_meson_args, *args, ".."
       system "meson", "compile"
       system "meson", "install"
     end
