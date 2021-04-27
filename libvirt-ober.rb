@@ -49,7 +49,8 @@ class LibvirtOber < Formula
   end
 
   def install
-    system "ls"
+    system "pwd"
+    system "ls src/qemu/qemu_domain.c"
     inreplace "src/qemu/qemu_domain.c" do |s|
       s.gsub! "if (is_reg && !dynamicOwnership)", "if (is_reg && dynamicOwnership)"
     end
