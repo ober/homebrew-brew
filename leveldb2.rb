@@ -1,3 +1,6 @@
+# typed: false
+# frozen_string_literal: true
+
 class Leveldb2 < Formula
   desc "Key-value storage library with ordered mapping"
   homepage "https://github.com/google/leveldb/"

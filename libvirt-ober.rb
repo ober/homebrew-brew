@@ -1,3 +1,6 @@
+# typed: false
+# frozen_string_literal: true
+
 class LibvirtOber < Formula
   desc "C virtualization API"
   homepage "https://www.libvirt.org"
@@ -47,7 +50,7 @@ class LibvirtOber < Formula
 
   def install
     inreplace "src/qemu/qemu_domain.c" do |s|
-      s.gsub! 'if (is_reg && !dynamicOwnership)', 'if (is_reg && dynamicOwnership)'
+      s.gsub! "if (is_reg && !dynamicOwnership)", "if (is_reg && dynamicOwnership)"
     end
 
     mkdir "build" do

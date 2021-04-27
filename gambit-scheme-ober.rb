@@ -1,17 +1,20 @@
+# typed: false
+# frozen_string_literal: true
+
 class GambitSchemeOber < Formula
   desc "Gambit Scheme is an implementation of the Scheme Language"
   homepage "https://github.com/gambit/gambit"
   url "https://github.com/gambit/gambit/archive/v4.9.3.tar.gz"
   sha256 "a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
 
-  depends_on "openssl@1.1"
-
   bottle do
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"
     rebuild 9
-    sha256 "5db5d4de074d0948947b2cd983c48ca04021c6b702bfe1254bb146048b058c81" => :mojave
-    sha256 "a859bb216c02f871b481e45dbdce9f2c839309431f202c23606487ff274741eb" => :catalina
+    sha256 mojave:   "5db5d4de074d0948947b2cd983c48ca04021c6b702bfe1254bb146048b058c81"
+    sha256 catalina: "a859bb216c02f871b481e45dbdce9f2c839309431f202c23606487ff274741eb"
   end
+
+  depends_on "openssl@1.1"
 
   def install
     args = %W[
@@ -22,7 +25,7 @@ class GambitSchemeOber < Formula
     ]
 
     inreplace "lib/os_io.c" do |s|
-      s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
+      s.gsub! "SSL_VERIFY_PEER", "SSL_VERIFY_NONE"
     end
 
     system "./configure", *args
@@ -40,6 +43,6 @@ class GambitSchemeOber < Formula
 
   test do
     assert_equal "0123456789",
-      shell_output("#{prefix}/current/bin/gsi -e \"(for-each write '(0 1 2 3 4 5 6 7 8 9))\"")
+                 shell_output("#{prefix}/current/bin/gsi -e \"(for-each write '(0 1 2 3 4 5 6 7 8 9))\"")
   end
 end

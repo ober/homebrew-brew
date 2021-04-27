@@ -1,3 +1,6 @@
+# typed: false
+# frozen_string_literal: true
+
 class GerbilSchemeOber < Formula
   desc "Opinionated dialect of Scheme designed for Systems Programming"
   homepage "https://cons.io"
@@ -6,8 +9,8 @@ class GerbilSchemeOber < Formula
 
   bottle do
     root_url "https://github.com/ober/homebrew-artifacts/raw/master"
-    sha256 "6d96dd44db93f9b8a427479628029efe443fa212b5716398dbc5846ca850a0e4" => :mojave
-    sha256 "3f3f27ddc909698b21f50699a4aec9c1ea2722508b30e1df8e7cd8875a7ae4bc" => :catalina
+    sha256 mojave:   "6d96dd44db93f9b8a427479628029efe443fa212b5716398dbc5846ca850a0e4"
+    sha256 catalina: "3f3f27ddc909698b21f50699a4aec9c1ea2722508b30e1df8e7cd8875a7ae4bc"
   end
 
   depends_on "gambit-scheme-ober"
@@ -21,11 +24,11 @@ class GerbilSchemeOber < Formula
       ENV.append_path "PATH", "#{Formula["gambit-scheme-ober"].opt_prefix}/current/bin"
       ENV["SDKROOT"] = MacOS.sdk_path if MacOS.version <= :sierra
       system "./configure", "--prefix=#{prefix}",
-                            "--with-gambit=#{Formula["gambit-scheme-ober"].opt_prefix}/current",
-                            "--enable-leveldb",
-                            "--enable-libxml",
-                            "--enable-libyaml",
-                            "--enable-lmdb"
+             "--with-gambit=#{Formula["gambit-scheme-ober"].opt_prefix}/current",
+             "--enable-leveldb",
+             "--enable-libxml",
+             "--enable-libyaml",
+             "--enable-lmdb"
       system "./build.sh"
       system "./install"
 

@@ -1,10 +1,13 @@
+# typed: false
+# frozen_string_literal: true
+
 class GambitSchemeCurrent < Formula
   desc "Gambit Scheme is an implementation of the Scheme Language"
   homepage "http://gambitscheme.org"
   head "https://github.com/gambit/gambit.git"
 
   depends_on "openssl@1.1"
-  #depends_on "gcc" => :build
+  # depends_on "gcc" => :build
 
   def install
     args = %W[
@@ -17,8 +20,7 @@ class GambitSchemeCurrent < Formula
     # inreplace "lib/os_io.c" do |s|
     #   s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     # end
-    #ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
-
+    # ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
 
     system "./configure", *args
     ENV.deparallelize

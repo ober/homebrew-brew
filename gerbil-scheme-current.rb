@@ -1,3 +1,6 @@
+# typed: false
+# frozen_string_literal: true
+
 class GerbilSchemeCurrent < Formula
   desc "Opinionated dialect of Scheme designed for Systems Programming"
   homepage "https://cons.io"
@@ -6,7 +9,7 @@ class GerbilSchemeCurrent < Formula
   depends_on "gambit-scheme-ober"
   depends_on "leveldb"
   depends_on "libyaml"
-#  depends_on "gcc"
+  #  depends_on "gcc"
   depends_on "lmdb"
   depends_on "openssl@1.1"
   depends_on "zlib"
@@ -33,7 +36,7 @@ class GerbilSchemeCurrent < Formula
         s.gsub! "(enable lmdb #f)", "(enable lmdb #t)"
       end
 
-      ENV['CC'] = Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")
+      ENV["CC"] = Formula["gcc"].opt_bin/Formula["gcc"].aliases.first.tr("@", "-")
 
       openssl = Formula["openssl@1.1"]
       ENV.prepend "LDFLAGS", "-L#{openssl.opt_lib} -lssl -lcrypto"
