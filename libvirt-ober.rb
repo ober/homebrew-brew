@@ -58,6 +58,8 @@ class LibvirtOber < Formula
         --localstatedir=#{var}
         --mandir=#{man}
         --sysconfdir=#{etc}
+        -Dqemu_user=#{ENV['USER']}
+        -Dqemu_group=everyone
         -Ddriver_esx=enabled
         -Ddriver_qemu=enabled
         -Dinit_script=none
