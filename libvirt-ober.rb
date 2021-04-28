@@ -57,6 +57,8 @@ class LibvirtOber < Formula
       s.gsub! '{ "dynamic_ownership" = "1" }', '{ "dynamic_ownership" = "0" }'
     end
 
+    puts `grep chown src/storage/storage_util.c`
+
     mkdir "build" do
       args = %W[
         --localstatedir=#{var}
