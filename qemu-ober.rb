@@ -9,17 +9,6 @@ class QemuOber < Formula
     url "https://download.qemu.org/qemu-6.0.0.tar.xz"
     sha256 "87bc1a471ca24b97e7005711066007d443423d19aacda3d442558ae032fa30b9"
 
-    # remove in next release
-    patch do
-      url "https://git.qemu.org/?p=qemu.git;a=patch;h=0dbce6efb5ff2e7113734d3a0cabbf87fc56feec"
-      sha256 "8ced33c7f829216544b762d8db0f143dbea04fa5a1ce41b491bbd7808f64a944"
-    end
-
-    # remove in next release
-    patch do
-      url "https://git.qemu.org/?p=qemu.git;a=patch;h=cb7abd8319d19000b57ae6c5c474c2635db054c6"
-      sha256 "818ad42f0cb25ab5df37058e27d7f879e4389489f692da4404c1f15dde5b2c4d"
-    end
   end
 
   bottle do
