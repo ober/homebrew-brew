@@ -15,7 +15,7 @@ class GambitSchemeCurrent < Formula
     --enable-poll
     --enable-openssl
     --enable-targets=js
-    --enable-default-compile-options="(compactness 9)"
+    --enable-default-compile-options="\(compactness 9\)"
     --enable-multiple-versions
     --enable-single-host
     --enable-smp
