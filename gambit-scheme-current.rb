@@ -29,6 +29,7 @@ class GambitSchemeCurrent < Formula
     ENV.deparallelize
     system "make", "bootstrap"
     system "make", "bootclean"
+    system "make"
     system "make", "modules"
     system "make", "install"
   end
