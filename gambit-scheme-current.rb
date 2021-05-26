@@ -11,10 +11,15 @@ class GambitSchemeCurrent < Formula
 
   def install
     args = %W[
-      --prefix=#{prefix}
-      --enable-multiple-versions
-      --enable-default-runtime-options=f8,-8,t8
-      --enable-openssl
+    --enable-default-runtime-options=f8,-8,t8
+    --enable-poll
+    --enable-openssl
+    --enable-targets=js
+    --enable-default-compile-options="(compactness 9)"
+    --enable-multiple-versions
+    --enable-single-host
+    --enable-smp
+    --prefix=#{prefix}
     ]
 
     # inreplace "lib/os_io.c" do |s|
@@ -26,12 +31,11 @@ class GambitSchemeCurrent < Formula
     ENV.deparallelize
     system "make", "bootstrap"
     system "make", "bootclean"
-    system "make"
     system "make", "modules"
     system "make", "install"
   end
 
   test do
-    assert_equal "0123456789", shell_output("#{prefix}/v4.9.1/bin/gsi -e \"(for-each write '(0 1 2 3 4 5 6 7 8 9))\"")
+    assert_equal "0123456789", shell_output("#{prefix}/v4.9.3/bin/gsi -e \"(for-each write '(0 1 2 3 4 5 6 7 8 9))\"")
   end
 end
