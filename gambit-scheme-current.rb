@@ -24,9 +24,8 @@ class GambitSchemeCurrent < Formula
     #   s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     # end
     # ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
-
-    system "./configure", *args
     ENV.deparallelize
+    system "./configure", *args
     system "make", "bootstrap"
     system "make", "bootclean"
     system "make"
