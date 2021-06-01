@@ -27,7 +27,6 @@ class GambitSchemeCurrent < Formula
 
     system "./configure", *args
     system "make", "bootstrap"
-    ENV.deparallelize
     system "make", "bootclean"
     system "make", "-j4"
     system "make", "modules"
