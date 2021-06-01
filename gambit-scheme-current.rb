@@ -14,19 +14,20 @@ class GambitSchemeCurrent < Formula
     --enable-default-runtime-options=f8,-8,t8
     --enable-openssl
     --enable-multiple-versions
-    --enable-single-host
     --enable-smp
     --prefix=#{prefix}
     ]
+
+# --enable-single-host
 
     # inreplace "lib/os_io.c" do |s|
     #   s.gsub! 'SSL_VERIFY_PEER', 'SSL_VERIFY_NONE'
     # end
     # ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
-    ENV.deparallelize
-    system "./configure", *args
-    system "make", "bootstrap"
-    system "make", "bootclean"
+
+    ENV.deparallelize { system "./configure", *args }
+    ENV.deparallelize {system "make", "bootstrap" }
+    ENV.deparallelize { system "make", "bootclean" }
     system "make"
     system "make", "modules"
     system "make", "install"
