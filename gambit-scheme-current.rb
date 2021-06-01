@@ -5,6 +5,7 @@ class GambitSchemeCurrent < Formula
   desc "Gambit Scheme is an implementation of the Scheme Language"
   homepage "http://gambitscheme.org"
   head "https://github.com/gambit/gambit.git"
+  revision "b3455576"
 
   depends_on "openssl@1.1"
   # depends_on "gcc" => :build
@@ -25,10 +26,11 @@ class GambitSchemeCurrent < Formula
     # end
     # ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
 
-    ENV.deparallelize { system "./configure", *args }
-    ENV.deparallelize {system "make", "bootstrap" }
-    ENV.deparallelize { system "make", "bootclean" }
-    system "make"
+    system "./configure", *args
+    system "make", "bootstrap"
+    ENV.deparallelize
+    system "make", "bootclean"
+    system "make", "-j4"
     system "make", "modules"
     system "make", "install"
   end
