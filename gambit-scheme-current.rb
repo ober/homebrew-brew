@@ -17,7 +17,6 @@ class GambitSchemeCurrent < Formula
     --enable-rtlib-debug-environments
     --enable-rtlib-debug-location
     --enable-single-host
-    --enable-smp
     --enable-track-scheme
     --prefix=#{prefix}
     ]
