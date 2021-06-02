@@ -18,7 +18,7 @@ class GambitSchemeCurrent < Formula
     --enable-rtlib-debug-location
     --enable-single-host
     --enable-track-scheme
-    CFLAGS='-D___DONT_USE_BUILTIN_SETJMP'
+    "CFLAGS='-D___DONT_USE_BUILTIN_SETJMP'"
     --prefix=#{prefix}
     ]
 
