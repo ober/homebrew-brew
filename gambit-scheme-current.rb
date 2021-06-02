@@ -18,6 +18,7 @@ class GambitSchemeCurrent < Formula
     --enable-rtlib-debug-location
     --enable-single-host
     --enable-track-scheme
+    'CFLAGS=-D___DONT_USE_BUILTIN_SETJMP'
     --prefix=#{prefix}
     ]
 
@@ -26,7 +27,6 @@ class GambitSchemeCurrent < Formula
     #end
 
     ENV['CC'] = "#{Formula['gcc'].opt_bin/Formula['gcc'].aliases.first.gsub("@","-")}"
-    ENV['CFLAGS'] = '-D___DONT_USE_BUILTIN_SETJMP'
     system "./configure", *args
     system "make", "bootstrap"
     system "make", "bootclean"
