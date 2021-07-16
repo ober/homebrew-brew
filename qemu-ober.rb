@@ -8,7 +8,6 @@ class QemuOber < Formula
   stable do
     url "https://download.qemu.org/qemu-6.0.0.tar.xz"
     sha256 "87bc1a471ca24b97e7005711066007d443423d19aacda3d442558ae032fa30b9"
-
   end
 
   depends_on "libtool" => :build
