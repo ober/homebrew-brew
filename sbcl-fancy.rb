@@ -1,4 +1,4 @@
-class Sbcl < Formula
+class SbclFancy < Formula
   desc "Steel Bank Common Lisp system"
   homepage "http://www.sbcl.org/"
   url "https://downloads.sourceforge.net/project/sbcl/sbcl/2.1.6/sbcl-2.1.6-source.tar.bz2"
