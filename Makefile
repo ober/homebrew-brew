@@ -50,7 +50,7 @@ jira:
 	$(MAKE) app space=jira
 
 slack:
-	$(MAKE) app space=slack
+	$(MAKE) app space=gerbil-slack
 
 confluence:
 	$(MAKE) app space=confluence
