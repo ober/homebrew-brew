@@ -1,7 +1,7 @@
 # typed: false
 # frozen_string_literal: true
 
-class Slack < Formula
+class GerbilSlack < Formula
   desc "Command-line helper"
   homepage "https://github.com/ober/slack"
   url "https://github.com/ober/slack.git"
