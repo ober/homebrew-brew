@@ -4,7 +4,7 @@
 class GambitSchemeCurrent < Formula
   desc "Gambit Scheme is an implementation of the Scheme Language"
   homepage "http://gambitscheme.org"
-  head "https://github.com/gambit/gambit.git", revision: "73c93ef6" # good "b3455576"
+  head "https://github.com/gambit/gambit.git", revision: "c0753ff127baefebd00193a135f48f18c59c496a"
 
   depends_on "openssl@1.1"
   depends_on "gcc" => :build
